@@ -43,7 +43,13 @@ namespace NAVY4U.Models
         {
             return db.Set<sanPham>().Find(maSP);
         }
-
+        public static List<baiViet> baiViets(int n)
+        {
+            List<baiViet> l = new List<baiViet>();
+            BanHangOnlineEntities db = new BanHangOnlineEntities();
+            l = db.baiViets.OrderByDescending(bv => bv.ngayDang).Take(n).ToList<baiViet>();
+            return l;
+        }
         public static string getNameSanPhamById(string maSP)
         {
             return db.Set<sanPham>().Find(maSP).tenSP;
