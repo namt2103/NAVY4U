@@ -24,9 +24,7 @@ namespace NAVY4U.Models
         /// <returns></returns>
         public static List<sanPham> getsanPhamsById(int maLoai)
         {
-            List<sanPham> sanPhams = new List<sanPham>();
-            sanPhams = db.Set<sanPham>().Where(x => x.maLoai == maLoai).ToList<sanPham>();
-            return sanPhams;
+            return db.Set<sanPham>().Where(x => x.maLoai == maLoai).ToList<sanPham>();
         }
         /// <summary>
         /// Lấy danh sách các loại hàng
