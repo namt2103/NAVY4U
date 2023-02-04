@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAVY4U", "NAVY4U.csproj", "{5CCEEE84-5080-4450-93C3-4B16C79B3846}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CCEEE84-5080-4450-93C3-4B16C79B3846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CCEEE84-5080-4450-93C3-4B16C79B3846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CCEEE84-5080-4450-93C3-4B16C79B3846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CCEEE84-5080-4450-93C3-4B16C79B3846}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B00C4E77-3455-4822-96DB-43BE77771F19}
+	EndGlobalSection
+EndGlobal

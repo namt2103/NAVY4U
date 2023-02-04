@@ -1,0 +1,212 @@
+﻿@using NAVY4U.Models;
+
+@{
+    ViewBag.Title = "Trang chủ - NAVY4U";
+}
+<section id="slider">
+    <!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        <li data-target="#slider-carousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-11">
+                                <img src="~/images/Slider/quangCao1.png" class="img-responsive" alt="" />
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-sm-11">
+                                <img src="~/images/Slider/quangCao2.png" class="img-responsive" alt="" />
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-sm-11">
+                                <img src="~/images/Slider/quangCao3.png" class="img-responsive" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/slider-->
+<section>
+    <div class="col-sm-12">
+        <div class="features_items">
+            <!--features_items-->
+            <h2 class="title text-center">Sản phẩm nổi bật</h2>
+            @{
+                int countfeature = 0;
+                foreach (var item in Common.getsanPhams().Where(m => m.maLoai == 1).OrderBy(x => (x.giaBan - x.giaBan * x.giamGia / 100)))
+                {
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <a href="@Url.Action("detail", "products", new {tenSP = item.tenSP})">
+                                        <img src="@item.hinhDD" alt="@item.tenSP" class="img-responsive" />
+                                    </a>
+                                    <h4>
+                                        <span class="unit-cash">@String.Format("₫{0:0,000}", item.giaBan)</span>
+                                        <span id="sale">
+                                            <span>@String.Format("₫{0:0,000}", (item.giaBan - item.giaBan * item.giamGia / 100))</span>
+                                        </span>
+                                    </h4>
+                                    <a href="@Url.Action("detail", "products", new {tenSP = item.tenSP})"><p>@item.tenSP</p></a>
+                                    @using (Html.BeginForm("addToCart", "Home", FormMethod.Post)) 
+                                    {
+                                        <input name="maSP" type="hidden" value="@item.maSP"/>
+                                        <button class="btn btn-primary add-to-cart">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            Thêm vào giỏ
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    countfeature++;
+                    if (countfeature > 3)
+                    {
+                        break;
+                    }
+                }
+            }
+        </div>
+        <!--features_items-->
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="col-sm-2">
+            <div class="left-sidebar">
+                <h2>Danh mục</h2>
+                <div class="panel-group category-products">
+                    <!--category-productsr-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <ul class="nav nav-tabs">
+                                <li class="panel-title">
+                                    <a href="@Url.Action("Index", "products")">tất cả sản phẩm</a>
+                                </li>
+                                @{
+                                    int count = 0;
+                                    foreach (var item in Common.getCategories())
+                                    {
+                                        
+                                            <li class="panel-title @(count == 0 ? "active in": "") ">
+                                                <a href="#@item.maLoai" data-toggle="tab">@item.loaiSP1</a>
+                                            </li>
+                                        
+                                        count++;
+                                        if (count > 5)
+                                        {
+                                            break;
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <!--category-products-->
+                </div>
+            </div>
+        </div>
+        <div class="tab-content col-sm-10">
+            @{
+                int dd = 0;
+                foreach (var item in Common.getCategories())
+                {
+                    if (dd == 0)
+                    {
+                        <div class="tab-pane fade active in" id="@item.maLoai">
+                            <h2 class="title text-center">@item.loaiSP1</h2>
+                            @foreach (var item2 in Common.getsanPhamsById(item.maLoai).OrderBy(x => x.giaBan))
+                            {
+                                <div class="col-sm-3">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <a href="@Url.Action("detail", "products", new {tenSP = item2.tenSP})">
+                                                    <img src="@item2.hinhDD" alt="" class="img-responsive" />
+                                                </a>
+                                                <h4>
+                                                    <span class="unit-cash">@String.Format("₫{0:0,000}", item2.giaBan)</span>
+                                                    <span class="@(item2.giamGia > 0 ? "" : "hidden")" id="sale">
+                                                        <span>@String.Format("₫{0:0,000}", (item2.giaBan - item2.giaBan * item2.giamGia / 100))</span>
+                                                    </span>
+                                                </h4>
+                                                <a href="@Url.Action("detail", "products", new {tenSP = item2.tenSP})"><p>@item2.tenSP</p></a>
+                                                @using (Html.BeginForm("addToCart", "Home", FormMethod.Post))
+                                                {
+                                                    <input name="maSP" type="hidden" value="@item2.maSP" />
+                                                    <button class="btn btn-primary add-to-cart">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                        Thêm vào giỏ
+                                                    </button>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="tab-pane fade" id="@item.maLoai">
+                            
+                            <h2 class="title text-center">@item.loaiSP1</h2>
+                            @foreach (var item2 in Common.getsanPhamsById(item.maLoai))
+                            {
+                                <div class="col-sm-3">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <a href="@Url.Action("detail", "products", new {tenSP = item2.tenSP})">
+                                                    <img src="@item2.hinhDD" alt="" class="img-responsive" />
+                                                </a>
+                                                <h4>
+                                                    <span class="unit-cash">@String.Format("₫{0:0,000}", item2.giaBan)</span>
+                                                    <span id="sale">
+                                                        <span>@String.Format("₫{0:0,000}", (item2.giaBan - item2.giaBan * item2.giamGia / 100))</span>
+                                                    </span>
+                                                </h4>
+                                                <a href="@Url.Action("detail", "products", new {tenSP = item2.tenSP})"><p>@item2.tenSP</p></a>
+                                                @using (Html.BeginForm("addToCart", "Home", FormMethod.Post))
+                                                {
+                                                    <input name="maSP" type="hidden" value="@item2.maSP" />
+                                                    <button class="btn btn-primary add-to-cart">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                        Thêm vào giỏ
+                                                    </button>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    dd++;
+                    if (dd > 5)
+                    {
+                        break;
+                    }
+                }
+            }
+        </div>
+    </div>
+</section>

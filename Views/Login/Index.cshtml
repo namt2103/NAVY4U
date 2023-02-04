@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Đăng nhập | NAVY4U</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/images/icons/navyf4-ico.png">
+</head>
+<body>
+<!-- /.login-logo -->
+    <div class="login-logo">
+        <a href="@Url.Action("Index", "Home")">
+            <h2 style="color: rgba(0,0,0,.7)"><span style="color: #ED4D2B">NAVY</span>4U</h2>
+        </a>
+    </div>
+    <div class="wrapper">
+        @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken();
+            <h2>Đăng nhập</h2>
+            <div class="input-box">
+                @Html.TextBox("acc", "", new { @required = "" })
+                <label>Tên đăng nhập</label>
+            </div>
+            <div class="input-box">
+                @Html.Password("pass", "", new { @required = "" })
+                <label>Mật khẩu</label>
+            </div>
+            <div class="support-box">
+                <a href="#">Quên mật khẩu</a><br />
+                <a href="#">Đăng ký tài khoản mới</a>
+                <button type="submit">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Đăng nhập
+                </button>
+            </div>
+        }
+    </div>
+    <!-- /.login-box -->
+</body>
+</html>
+

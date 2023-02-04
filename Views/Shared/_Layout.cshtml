@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="~/images/icons/navyf4-ico.png">
+    <link href="~/Content/all.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/prettyPhoto.css" rel="stylesheet">
+    <link href="~/Content/animate.css" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/media.css" rel="stylesheet" />
+</head><!--/head-->
+
+<body>
+    <header id="header">
+        <!--header-->
+        <div class="header-middle">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="box-logo col-md-2 clearfix">
+                        <div class="logo pull-left">
+                            <a href="@Url.Action("Index", "home")">
+                                <span>NAVY<span style="color: rgba(0,0,0,.87)">4U</span></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-10 clearfix">
+                        <div class="shop-menu pull-right d-flex align-items-center justify-content-center">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#"><i class="fa fa-money"></i>Thanh toán</a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
+                                <li><a href="@Url.Action("Index", "login")"><i class="fa fa-user"></i>Đăng nhập</a></li>
+                            </ul>
+                        </div>
+                        @using (Html.BeginForm("Index", "search"))
+                        {
+                            <div class="searchbar pull-right">
+                                @Html.TextBox("q", "", new { @class = "search_input", @placeholder = "Tìm kiếm trong cửa hàng" })
+                                <button  class="search_icon" type="submit" value="Tìm kiếm"><i class="fa-solid fa-search"></i></button>
+                            </div>
+                        }
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="mainmenu pull-left">
+                            <ul class="nav navbar-nav collapse navbar-collapse">
+                                <li class="dropdown">
+                                    <a href="#">Cửa hàng<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="@Url.Action("Index", "products")">Sản phẩm</a></li>
+                                        <li><a href="#">Thanh toán</a></li>
+                                        <li><a href="#">Giỏ hàng</a></li>
+                                        <li><a href="@Url.Action("Index", "login")">Đăng nhập</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#">Bài viết<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="#">Danh sách bài viết</a></li>
+                                        <li><a href="#">Chi tiết bài viết</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Liên hệ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div><!--/header-middle-->
+    </header><!--/header-->
+    <!--header-->
+    @RenderBody()
+    <footer id="footer">
+        <!--Footer-->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="companyinfo">
+                            <h2><span>NAVY</span>4U</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Dịch vụ</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Hỗ trợ trực tuyến</a></li>
+                                <li><a href="#">Liên hệ</a></li>
+                                <li><a href="#">Tình trạng đơn hàng</a></li>
+                                <li><a href="#">Câu hỏi thường gặp</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Chính sách</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Điều khoản sử dụng</a></li>
+                                <li><a href="#">Chính sách bảo mật</a></li>
+                                <li><a href="#">Chính sách hoàn tiền</a></li>
+                                <li><a href="#">Hệ thống thanh toán</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Về NAVY4U</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Thông tin cửa hàng</a></li>
+                                <li><a href="#">Vị trí cửa hàng</a></li>
+                                <li><a href="#">Chương trình liên kết</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <div class="single-widget">
+                            <h2>Về NAVY4U</h2>
+                            <form action="#" class="searchform">
+                                <input type="text" placeholder="Email của bạn" />
+                                <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+                                <p>Nhận thông tin cập nhật và mã giảm giá</p>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="pull-left">Edited by <span style="color: #ED4D2B;font-weight: 500">NamT</span></p>
+                    <p class="pull-right">Copyright © 2022 NAVY4U Inc. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+
+    </footer><!--/Footer-->
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.scrollUp.min.js"></script>
+    <script src="~/Scripts/jquery.prettyPhoto.js"></script>
+    <script src="~/Scripts/main.js"></script>
+</body>
+
+</html>
+

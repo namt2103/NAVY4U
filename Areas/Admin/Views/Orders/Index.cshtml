@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+}
+<style>
+    table, .btn{
+        font-size: 13px;
+    }
+
+</style>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>DataTables</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")">Home</a></li>
+                    <li class="breadcrumb-item active">DataTables</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Danh sách đơn hàng</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã đơn</th>
+                                <th>Tên khách hàng</th>
+                                <th>Ngày giao</th>
+                                <th>Địa chỉ</th>
+                                <th>Thành tiền</th>
+                                <th>Lệnh</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>001</td>
+                                <td>30122022001</td>
+                                <td>Nguyễn Thanh Nam</td>
+                                <td>31/12/2022</td>
+                                <td>777 APĐ, Q.12, TP. Hồ Chí Minh</td>
+                                <td>250.000</td>
+                                <td>
+                                    <button class="btn btn-danger">Huỷ đơn</button>
+                                    <button class="btn btn-primary">Chi tiết</button>
+                                    <button class="btn btn-success">Kích hoạt</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>002</td>
+                                <td>30122022002</td>
+                                <td>Hoàng Văn Vỹ</td>
+                                <td>31/12/2022</td>
+                                <td>789 APĐ, Q.12, TP. Hồ Chí Minh</td>
+                                <td>260.000</td>
+                                <td>
+                                    <button class="btn btn-danger">Huỷ đơn</button>
+                                    <button class="btn btn-primary">Chi tiết</button>
+                                    <button class="btn btn-success">Kích hoạt</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+<!-- /.content -->
+</section>

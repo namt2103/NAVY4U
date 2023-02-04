@@ -1,0 +1,43 @@
+﻿@model NAVY4U.Models.sanPham
+
+@{
+    ViewBag.Title = Model.tenSP;
+}
+
+<div class="container">
+    <div class="row">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">@Html.ActionLink("Trang chủ", "Index", "home")</li>
+                <li class="breadcrumb-item">@Html.ActionLink("Sản phẩm", "Index", "products")</li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.tenSP</li>
+            </ol>
+        </nav>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Model.hinhDD" alt="@Model.noiDung" class="img-responsive" width="400"/>
+        </div>
+
+        <div class="col-md-6 flex-column">
+            <h2>@Model.tenSP</h2>
+            <h4>
+                <span class="unit-cash">@String.Format("₫{0:0,000}", Model.giaBan)</span>
+                <span id="sale">
+                    <span>@String.Format("₫{0:0,000}", (Model.giaBan - Model.giaBan * Model.giamGia / 100))</span>
+                </span>
+            </h4>
+            @using (Html.BeginForm("addToCart", "Home", FormMethod.Post))
+            {
+                <input name="maSP" type="hidden" value="@Model.maSP" />
+                <button class="btn btn-primary add-to-cart">
+                    <i class="fa fa-shopping-cart"></i>
+                    Thêm vào giỏ
+                </button>
+            }
+            @Html.ActionLink("Trở về trang sản phẩm", "Index", "products")
+        </div>
+    </div>
+</div>
+
