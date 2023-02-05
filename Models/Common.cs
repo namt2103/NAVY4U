@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using NAVY4U.Models;
 
 namespace NAVY4U.Models
 {
@@ -24,7 +25,9 @@ namespace NAVY4U.Models
         /// <returns></returns>
         public static List<sanPham> getsanPhamsById(int maLoai)
         {
-            return db.Set<sanPham>().Where(x => x.maLoai == maLoai).ToList<sanPham>();
+            List<sanPham> sanPhams = new List<sanPham>();
+            sanPhams = db.Set<sanPham>().Where(x => x.maLoai == maLoai).ToList<sanPham>();
+            return sanPhams;
         }
         /// <summary>
         /// Lấy danh sách các loại hàng
@@ -43,6 +46,7 @@ namespace NAVY4U.Models
         {
             return db.Set<sanPham>().Find(maSP);
         }
+
         public static string getNameSanPhamById(string maSP)
         {
             return db.Set<sanPham>().Find(maSP).tenSP;
@@ -52,16 +56,17 @@ namespace NAVY4U.Models
             return db.Set<sanPham>().Find(maSP).hinhDD;
         }
         /// <summary>
-        /// Lấy ra n bài biết từ db
+        /// Lấy ra n bài viết mới nhất từ database 
         /// </summary>
         /// <param name="n"></param>
-        /// <returns>Danh sách gồm n bài viết</returns>
-        public static List<baiViet> baiViets(int n)
+        /// <returns></returns>
+        public static List<baiViet> getArticles(int n)
         {
             List<baiViet> l = new List<baiViet>();
             BanHangOnlineEntities db = new BanHangOnlineEntities();
-            l = db.baiViets.OrderByDescending(bv => bv.ngayDang).Take(n).ToList<baiViet>();
+            l = db.baiViets.donHangByDescending(bv => bv.ngayDang).Take(n).ToList<baiViet>();
             return l;
         }
+
     }
 }

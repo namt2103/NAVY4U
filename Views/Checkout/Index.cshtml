@@ -1,0 +1,155 @@
+﻿
+@model NAVY4U.Models.khachHang
+@using NAVY4U.Models;
+@{
+
+    ViewBag.Title = "Checkout";
+
+    CartShop cart = ViewData["Cart"] as CartShop;
+}
+<!-- ================ start banner area ================= -->
+<section class="blog-banner-area" id="category">
+    <div class="container h-100">
+        <div class="blog-banner">
+            <div class="text-center">
+                <h1>Product Checkout</h1>
+                <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ end banner area ================= -->
+<!--================Checkout Area =================-->
+<section class="checkout_area section-margin--small">
+    <div class="container">
+
+        <div>
+            <div>
+
+                <div>
+                    <div class="order_box">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <h2>Your Order</h2>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Total</th>
+                                    </tr>
+                                </thead>
+                                <ul class="list list_1">
+                                    @{
+                                        foreach (ctDonHang i in cart.productsCart.Values)
+                                        {
+                                        <tr>
+                                            <td>
+                                                <div class="media">
+                                                    <div class="d-flex">
+                                                        <img style="width: 200;height: 200px;" src="@Common.getImageSanPhamById(i.maSP)" alt="">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <p>@Common.getNameSanPhamById(i.maSP)</p>
+                                                        <p>ID:@i.maSP</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="cart_quantity">
+                                                <div class="cart_quantity_button">
+
+                                                    <h5>@string.Format("{0:#,0}", @i.giaBan) VND</h5>
+
+                                                </div>
+
+                                            </td>
+                                            <td>
+                                                <div class="product_count">
+                                                    <input type="text" name="qty" id="sst" maxlength="12" value="@i.soLuong" title="Quantity:"
+                                                           class="input-text qty">
+
+
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <h5>@string.Format("{0:#,0}", @cart.moneyOfProduct(i)) VND</h5>
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    }
+                                    }
+                                    </ul>
+
+                            </div>
+
+                            </table>
+                            <table>
+                                <ul>
+                                    <ul class="list list_2">
+                                        <li><a href="#">Subtotal <span>@string.Format("{0:#,0}", @cart.totalOfCartShop()) VND</span></a></li>
+                                        <li><a href="#">VAT(10%)<span>@((cart.totalOfCartShop()*10)/100)VND</span></a></li>
+                                        <li><a href="#">Total <span> @(cart.totalOfCartShop()+(cart.totalOfCartShop() * 10) / 100) VND</span></a></li>
+                                    </ul>
+
+                                </ul>
+                            </table>
+                        </div>
+                    </div>
+
+                    @using (Html.BeginForm("SaveToDataBase", "Checkout", FormMethod.Post))
+                    {
+                        <div>
+                            <h3>Billing Details</h3>
+                            <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                                <div class="col-md-12 form-group p_star ">
+
+                                    @Html.TextBoxFor(m => m.tenKH, new { @class = "form-control", @placeholder = "Your name", @id = "Name", @name = "name" })
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+
+                                    @Html.TextBoxFor(m => m.soDT, new { @class = "form-control", @placeholder = "Phone number", @id = "number", @name = "number" })
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+
+                                    @Html.TextBoxFor(m => m.email, new { @class = "form-control", @placeholder = "Email Address", @id = "email", @name = "compemailany" })
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+
+                                    @Html.TextBoxFor(m => m.diaChi, new { @class = "form-control", @placeholder = "Home address", @id = "Home address", @name = "Home address" })
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <div class="creat_account">
+                                        <input type="checkbox" id="f-option2" name="selector">
+                                        <label for="f-option2">Create an account?</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-group mb-0">
+                                    <div class="creat_account">
+                                        <h3>Shipping Details</h3>
+                                        <input type="checkbox" id="f-option3" name="selector">
+                                        <label for="f-option3">Ship to a different address?</label>
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                        @Html.TextAreaFor(m => m.ghiChu, new { @class = "form-control", @placeholder = "Order Notes", @id = "Your note", @name = "message" })
+
+                                        @*<textarea style=" height: 300PX;" class="form-control" name="message" id="message" rows="1" placeholder="Order Notes"></textarea>*@
+                                    </div>
+
+                                    <div class="text-center button-paypal">
+                                        <button>Proceed to Paypal</button>
+                                        @*<a class="button button-paypal" href="@Url.Action("Index","Checkout")">Proceed to Paypal</a>*@
+                                    </div>
+                            </form>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Checkout Area =================-->

@@ -1,0 +1,133 @@
+﻿
+@model NAVY4U.Models.CartShop
+@using NAVY4U.Models;
+@{
+    ViewBag.Title = "Cart";
+    ViewBag.active = 2;
+    CartShop cart = ViewData["Cart"] as CartShop;
+}
+<!-- ================ start banner area ================= -->
+<section class="blog-banner-area" id="category">
+    <div class="container h-100">
+        <div class="blog-banner">
+            <div class="text-center">
+                <h1>Shopping Cart</h1>
+                <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ end banner area ================= -->
+<!--================Cart Area =================-->
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (ctDonHang x in cart.productsCart.Values)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img style="width: 200;height: 200px;" src="@Common.getImageSanPhamById(x.maSP)" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <p>@Common.getNameSanPhamById(x.maSP)</p>
+                                                <p>ID:@x.maSP</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart_quantity">
+                                        <div class="cart_quantity_button">
+
+                                            <h5>@string.Format("{0:#,0}", @x.giaBan) VND</h5>
+
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="product_count">
+                                            <input type="text" name="qty" id="sst" maxlength="12" value="@x.soLuong" title="Quantity:"
+                                                   class="input-text qty">
+
+                                            @using (Html.BeginForm("Increase", "Cart", FormMethod.Post))
+                                            {
+                                                <input type="hidden" name="masp" value="@x.maSP">
+                                                <button style="top: 0px;left:7rem;" name="masp" value="@x.maSP">
+                                                    <i class="ti-angle-right"></i>
+                                                </button>
+                                            }
+                                            @using (Html.BeginForm("Decrease", "Cart", FormMethod.Post))
+                                            {
+                                                <input type="hidden" name="masp" value="@x.maSP">
+                                                <button style="top: 19px;left: 7rem;" name="masp" value="@x.maSP">
+                                                    <i class="ti-angle-left"></i>
+                                                </button>
+                                            }
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>@string.Format("{0:#,0}", @cart.moneyOfProduct(x)) VND</h5>
+                                    </td>
+                                    <td>
+                                        @using (Html.BeginForm("RemoveTtem", "Cart", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="masp" value="@x.maSP">
+                                            <button class="cart_quantity-down">X</button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+
+                        <tr class="bottom_button">
+
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <h5>Subtotal</h5>
+                            </td>
+                            <td>
+                                <h5>Subtotal:@string.Format("{0:#,0}", @cart.totalOfCartShop()) VND</h5>
+                                <br />
+                                <h5>VAT(10%): @((cart.totalOfCartShop()*10)/100)</h5>
+                                <br />
+                                <h5>Total: @(cart.totalOfCartShop()+(cart.totalOfCartShop() * 10) / 100) </h5>
+                            </td>
+                        </tr>
+                        <tr class="out_button_area">
+                            <td>
+                                <div class="checkout_btn_inner d-flex align-items-center">
+                                    <a class="btn btn-danger" href="@Url.Action("Index","")">Continue Shopping</a>
+                                    <a class="btn btn-success ml-2" href="@Url.Action("Index","Checkout")">Proceed to checkout</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->

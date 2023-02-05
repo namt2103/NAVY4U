@@ -1,6 +1,7 @@
-﻿
+﻿@using NAVY4U.Models;
 @{
     ViewBag.Title = "Article List";
+    List<baiViet> ds = ViewData["DanhSachBV"] as List<baiViet>;
 }
 <!-- Main content -->
 <section class="content">
@@ -23,51 +24,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>0001</td>
-                                <td>Khoá học mùa hè</td>
-                                <td>Nguyễn Thanh Nam</td>
-                                <td>15/04/2022</td>
-                                <td>
-                                    <button class="btn btn-danger">Xoá</button>
-                                    <button class="btn btn-primary">Chi tiết</button>
-                                    <button class="btn btn-success">Kích hoạt</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>0002</td>
-                                <td>Khoá học UI/UX</td>
-                                <td>Hoàng Văn Vỹ</td>
-                                <td>20/12/2022</td>
-                                <td>
-                                    <button class="btn btn-danger">Xoá</button>
-                                    <button class="btn btn-primary">Chi tiết</button>
-                                    <button class="btn btn-success">Kích hoạt</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>0003</td>
-                                <td>Khoá học tháng 12</td>
-                                <td>Nguyễn Thanh Nam</td>
-                                <td>31/12/2022</td>
-                                <td>
-                                    <button class="btn btn-danger">Xoá</button>
-                                    <button class="btn btn-primary">Chi tiết</button>
-                                    <button class="btn btn-success">Kích hoạt</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>0004</td>
-                                <td>Khoá học tháng 1</td>
-                                <td>Nguyễn Thanh Nam</td>
-                                <td>01/01/2023</td>
-                                <td>
-                                    <button class="btn btn-danger">Xoá</button>
-                                    <button class="btn btn-primary">Chi tiết</button>
-                                    <button class="btn btn-success">Kích hoạt</button>
-                                </td>
-                            </tr>
+                            @{
+                                foreach (baiViet i in ds)
+                                {
 
+                                    <tr>
+                                        <td>@i.maBV</td>
+                                        <td>@i.tenBV</td>
+                                        <td>@i.taiKhoanTV.hoDem @i.taiKhoanTV.tenTV</td>
+                                        <td>@string.Format("{0: hh:mm [dd/MM/yyyy]}", i.ngayDang)</td>
+                                        <td>
+                                            <button class="btn btn-success">Duyệt bài</button>
+                                            <button class="btn btn-primary">Sửa nội dung</button>
+                                            <button class="btn btn-danger">Xoá</button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
                         </tbody>
                     </table>
                 </div>

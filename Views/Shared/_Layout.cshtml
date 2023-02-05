@@ -32,8 +32,8 @@
                     <div class="col-md-10 clearfix">
                         <div class="shop-menu pull-right d-flex align-items-center justify-content-center">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-money"></i>Thanh toán</a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
+                                <li><a href="@Url.Action("Index", "Checkout")"><i class="fa fa-money"></i>Thanh toán</a></li>
+                                <li><a href="@Url.Action("Index", "Cart")"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
                                 <li><a href="@Url.Action("Index", "login")"><i class="fa fa-user"></i>Đăng nhập</a></li>
                             </ul>
                         </div>
@@ -62,8 +62,8 @@
                                     <a href="#">Cửa hàng<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="@Url.Action("Index", "products")">Sản phẩm</a></li>
-                                        <li><a href="#">Thanh toán</a></li>
-                                        <li><a href="#">Giỏ hàng</a></li>
+                                        <li><a href="@Url.Action("Index", "checkout")">Thanh toán</a></li>
+                                        <li><a href="@Url.Action("Index", "cart")">Giỏ hàng</a></li>
                                         <li><a href="@Url.Action("Index", "login")">Đăng nhập</a></li>
                                     </ul>
                                 </li>
@@ -71,7 +71,7 @@
                                     <a href="#">Bài viết<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="#">Danh sách bài viết</a></li>
-                                        <li><a href="#">Chi tiết bài viết</a></li>
+                                        <li><a href="#">Đăng bài viết</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Liên hệ</a></li>

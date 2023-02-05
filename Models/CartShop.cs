@@ -41,6 +41,7 @@ namespace NAVY4U.Models
             {
                 ctDonHang x = productsCart.Values[productsCart.IndexOfKey(maSP)];
                 x.soLuong++;
+                updateOneItem(x);
             }
             else
             {
@@ -52,13 +53,22 @@ namespace NAVY4U.Models
                 i.soLuong = 1;
 
                 // Lấy giá bán / giảm giá từ bảng sanPham
-                sanPham s = Common.getsanPhamById(maSP);
+                sanPham s = Common.getsanPhamById(i.maSP);
                 i.giaBan = s.giaBan;
                 i.giamGia = s.giamGia;
 
                 // Thêm sản phẩm vào giỏ hàng
                 productsCart.Add(maSP, i);
             }
+        }
+        /// <summary>
+        /// Cập nhật thêm sp trong giỏ hàng
+        /// </summary>
+        /// <param name="x"></param>
+        public void updateOneItem(ctDonHang x)
+        {
+            this.productsCart.Remove(x.maSP);
+            this.productsCart.Add(x.maSP, x);
         }
         /// <summary>
         /// Phương thức xoá sản phẩm trong giỏ hàng

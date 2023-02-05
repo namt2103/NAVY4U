@@ -1,4 +1,4 @@
-﻿
+﻿@model NAVY4U.Models.baiViet
 @{
     ViewBag.Title = "New Article";
 }
@@ -20,58 +20,61 @@
     </div><!-- /.container-fluid -->
 </section>
 <div class="container-fluid">
-    <div class="row">
-        <!-- left column -->
-        <div class="col-sm-8">
-            <!-- general form elements -->
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Thông tin chính</h3>
+    @using (Html.BeginForm("Index", "NewArticle", FormMethod.Post))
+    {
+        <div class="row">
+            <!-- left column -->
+            <div class="col-sm-8">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Thông tin chính</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="tenbaiviet">Tên bài viết</label>
+                                <input type="text" class="form-control" id="tenbaiviet" placeholder="Tên bài viết tối đa 50 ký tự">
+                            </div>
+                            <div class="form-group">
+                                <label for="noidungtt">Nội dung tóm tắt</label>
+                                <textarea rows="5" class="form-control" placeholder="Nội dung tối đa 150 từ"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /.card-body -->
                 </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form role="form">
+            </div>
+            <!-- right column -->
+            <div class="col-sm-4">
+                <div class="card card-warning">
+                    <div class="card-header">
+                        <h3 class="card-title">Ảnh </h3>
+                    </div>
+                    <!-- /.card-header -->
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="tenbaiviet">Tên bài viết</label>
-                            <input type="text" class="form-control" id="tenbaiviet" placeholder="Tên bài viết tối đa 50 ký tự">
+                        <label for="exampleInputFile">File input</label>
+                        <div class="col-sm-12 pb-3">
+                            <img class="w-100" src="~/Images/news/2.png" />
                         </div>
-                        <div class="form-group">
-                            <label for="noidungtt">Nội dung tóm tắt</label>
-                            <textarea rows="5" class="form-control" placeholder="Nội dung tối đa 150 từ"></textarea>
-                        </div>
-                    </div>
-                </form>
-                <!-- /.card-body -->
-            </div>
-        </div>
-        <!-- right column -->
-        <div class="col-sm-4">
-            <div class="card card-warning">
-                <div class="card-header">
-                    <h3 class="card-title">Ảnh đại diện</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="col-sm-12 pb-3">
-                        <img class="w-100" src="~/Images/news/2.png" />
-                    </div>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="">Upload</span>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="">Upload</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!--/.col (right) -->
             </div>
-            <!--/.col (right) -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Đăng tải bài viết</button>
+            </div>
         </div>
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Đăng tải bài viết</button>
-        </div>
-    </div>
+    }
 </div>
