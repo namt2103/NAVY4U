@@ -16,7 +16,7 @@ namespace ProjectFinal1.Controllers
         {
 
             khachHang cs = new khachHang();
-            CartShop cart = Session["CartShop"] as CartShop;
+            CartShop cart = Session["GioHang"] as CartShop;
 
             ViewData["CartShop"] = cart;
             return View();
@@ -67,7 +67,7 @@ namespace ProjectFinal1.Controllers
                         context.SaveChanges();
 
                         // get list of Item from cart shop
-                        CartShop cart = Session["CartShop"] as CartShop;
+                        CartShop cart = Session["GioHang"] as CartShop;
                         //update donHang infor to donHang_DETAILS object you have just create before
                         foreach (ctDonHang i in cart.productsCart.Values)
                         {

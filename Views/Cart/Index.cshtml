@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Cart";
     ViewBag.active = 2;
-    CartShop cart = ViewData["Cart"] as CartShop;
+    CartShop cart = Session["GioHang"] as CartShop;
 }
 <!-- ================ start banner area ================= -->
 <section class="blog-banner-area" id="category">
@@ -45,7 +45,7 @@
                                     <td>
                                         <div class="media">
                                             <div class="d-flex">
-                                                <img style="width: 200;height: 200px;" src="@Common.getImageSanPhamById(x.maSP)" alt="">
+                                                <img style="width: 200px;height: 200px;" src="@Common.getImageSanPhamById(x.maSP)" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <p>@Common.getNameSanPhamById(x.maSP)</p>

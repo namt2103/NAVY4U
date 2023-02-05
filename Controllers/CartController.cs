@@ -14,28 +14,28 @@ namespace NAVY4U.Controllers
         public ActionResult Index()
         {
             CartShop gioHang = Session["GioHang"] as CartShop;
-            ViewData["Cart"] = gioHang;
+            Session["GioHang"] = gioHang;
             return View();
         }
         public ActionResult Increase(string maSP)
         {
             CartShop gioHang = Session["GioHang"] as CartShop;
             gioHang.addItem(maSP);
-            Session["CartShop"] = gioHang;
+            Session["GioHang"] = gioHang;
             return RedirectToAction("Index");
         }
         public ActionResult Decrease(string maSP)
         {
             CartShop gioHang = Session["GioHang"] as CartShop;
             gioHang.decreaseItem(maSP);
-            Session["CartShop"] = gioHang;
+            Session["GioHang"] = gioHang;
             return RedirectToAction("Index");
         }
         public ActionResult RemoveTtem(string masp)
         {
             CartShop gioHang = Session["GioHang"] as CartShop;
             gioHang.deleteItem(masp);
-            Session["CartShop"] = gioHang;
+            Session["GioHang"] = gioHang;
             return RedirectToAction("Index");
         }
     }

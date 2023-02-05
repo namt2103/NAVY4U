@@ -64,7 +64,7 @@ namespace NAVY4U.Models
         {
             List<baiViet> l = new List<baiViet>();
             BanHangOnlineEntities db = new BanHangOnlineEntities();
-            l = db.baiViets.donHangByDescending(bv => bv.ngayDang).Take(n).ToList<baiViet>();
+            l = db.baiViets.OrderByDescending(bv => bv.ngayDang).Take(n).ToList<baiViet>();
             return l;
         }
 
