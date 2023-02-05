@@ -678,7 +678,7 @@ h2.title:before {
     overflow: hidden;
 }
 
-h2.title {
+.title {
     color: #ED4D2B;
     font-family: 'Roboto', sans-serif;
     font-size: 18px;

@@ -11,7 +11,7 @@ namespace TheFourthPractice.Areas.Admin.Controllers
     public class OrdersController : Controller
     {
         // GET: Admin/Order
-        private  static BanHangOnlineEntities database = new BanHangOnlineEntities();
+        private static BanHangOnlineEntities database = new BanHangOnlineEntities();
         private static bool daDuyet;
         public ActionResult ListOrder(string IsActive)
         {

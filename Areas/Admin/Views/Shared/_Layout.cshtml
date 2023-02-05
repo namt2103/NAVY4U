@@ -194,7 +194,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="@Url.Action("Index", "Orders")" class="nav-link">
+                                    <a href="@Url.Action("listorder", "Orders")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Đơn mới tạo</p>
                                     </a>
@@ -267,20 +267,6 @@
                     "info": true,
                     "autoWidth": false,
                 });
-        });
-    </script>
-    <script>
-        $(function () {
-            $("#example1").DataTable(
-                {
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false,
-                }
-            );
         });
     </script>
 </body>

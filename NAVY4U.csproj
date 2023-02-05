@@ -318,7 +318,6 @@
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\NewArticle\Index.cshtml" />
     <Content Include="Areas\Admin\Views\NewProduct\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\ListOrder.cshtml" />
