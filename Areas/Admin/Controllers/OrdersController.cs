@@ -15,7 +15,6 @@ namespace TheFourthPractice.Areas.Admin.Controllers
         private static bool daDuyet;
         public ActionResult ListOrder(string IsActive)
         {
-
             if (string.IsNullOrEmpty(IsActive))
             {
                 ModelState.AddModelError("", "You need enter the product title");
@@ -23,7 +22,6 @@ namespace TheFourthPractice.Areas.Admin.Controllers
             }
             try
             {
-
                 daDuyet = IsActive.Equals("1");
                 getListProduct();
                 return View();

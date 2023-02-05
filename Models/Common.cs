@@ -79,6 +79,13 @@ namespace NAVY4U.Models
             l = db.baiViets.OrderByDescending(bv => bv.ngayDang).ToList<baiViet>();
             return l;
         }
+        public static List<donHang> GetDonHangs()
+        {
+            List<donHang> l = new List<donHang>();
+            BanHangOnlineEntities db = new BanHangOnlineEntities();
+            l = db.donHangs.OrderByDescending(bv => bv.ngayDat).ToList<donHang>();
+            return l;
+        }
 
     }
 }
