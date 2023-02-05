@@ -8,7 +8,6 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
 }
 
 button {
@@ -19,7 +18,6 @@ button {
 
 a {
     text-decoration: none;
-    color: deepskyblue;
 }
 
 .login-logo {
@@ -222,3 +220,22 @@ a {
 #slider {
     padding-bottom: 0;
 }
+.countCart {
+    background: #fff;
+    border-radius: 100px;
+    color: #ED4D2B;
+    width: 20px;
+    height: 20px;
+}
+.shop-menu ul li a {
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 0;
+        margin: 0;
+    }
+.shop-menu {
+    margin-top: 10px;
+}
+    

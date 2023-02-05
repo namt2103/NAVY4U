@@ -18,7 +18,7 @@ namespace ProjectFinal1.Controllers
             khachHang cs = new khachHang();
             CartShop cart = Session["GioHang"] as CartShop;
 
-            ViewData["CartShop"] = cart;
+            Session["CarShop"] = cart;
             return View();
 
         }
@@ -82,7 +82,7 @@ namespace ProjectFinal1.Controllers
 
                         trans.Commit();
                         // 
-                        return RedirectToAction("Index", "Notification");
+                        return RedirectToAction("Index", "home");
                     }
                     catch (Exception e)
                     {
@@ -92,7 +92,7 @@ namespace ProjectFinal1.Controllers
                 }
             }
             // if error retur checkout
-            return RedirectToAction("Index", "Checkout");
+            return RedirectToAction("Index", "checkout");
         }
     }
 }

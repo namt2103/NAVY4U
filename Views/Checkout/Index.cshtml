@@ -11,8 +11,9 @@
         <div class="blog-banner">
             <nav aria-label="breadcrumb" class="banner-breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang Chủ</a></li>
-                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Cart")">Giỏ Hàng</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "home")">Trang Chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "products")">Sản phẩm</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "cart")">Giỏ Hàng</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Thanh Toán</li>
                 </ol>
             </nav>
@@ -30,52 +31,86 @@
                     <thead>
                         <tr>
                             <th scope="col">Sản phẩm</th>
-                            <th scope="col">Giá tiền</th>
-                            <th scope="col">Số lượng</th>
-                            <th scope="col">Tổng</th>
+                            <th class="text-center" scope="col">Giá tiền</th>
+                            <th class="text-center" scope="col">Số lượng</th>
+                            <th class="text-center" scope="col">Tổng</th>
                         </tr>
                         <tr></tr>
                     </thead>
-                    <tbody class="list list_1">
-                       @{ 
-                        foreach (ctDonHang i in cart.productsCart.Values)
+                    <tbody>
+                        @foreach (ctDonHang x in cart.productsCart.Values)
                         {
                             <tr>
                                 <td>
-                                    <div class="row">
-                                        <div class="d-flex">
-                                            <img width="100" src="@Common.getImageSanPhamById(i.maSP)" alt="">
+                                    <div class="dflex">
+                                        <div style="margin-right: 10px">
+                                            <img width="100" src="@Common.getImageSanPhamById(x.maSP)" alt="">
                                         </div>
-                                        <div class="media-body">
-                                            <p>@Common.getNameSanPhamById(i.maSP)</p>
-                                            <p>Mã sản phẩm: @i.maSP</p>
+                                        <div>
+                                            <p>@Common.getNameSanPhamById(x.maSP)</p>
+                                            <p>Mã sản phẩm: @x.maSP</p>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="cart_quantity">
+                                <td class="cart_quantity text-center">
                                     <div class="cart_quantity_button">
-                                        <h5>@String.Format("₫{0:0,000}", (i.giaBan - i.giaBan * i.giamGia / 100))</h5>
+                                        <h5>@String.Format("{0:0,000} VNĐ", (x.giaBan - x.giaBan * x.giamGia / 100))</h5>
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="product_count">
-                                        <span>@i.soLuong</span>
+                                <td class="text-center">
+                                    <div style="display:flex;justify-content:center;margin: 10px 0;">
+                                        <div style="width:28px">@x.soLuong</div>
                                     </div>
                                 </td>
+                                <td class="text-center">
+                                    <h5>@String.Format("{0:0,000} VNĐ", @cart.moneyOfProduct(x))</h5>
+                                </td>
                                 <td>
-                                    <h5>@String.Format("₫{0:0,000}", @cart.moneyOfProduct(i))</h5>
+                                    @using (Html.BeginForm("RemoveTtem", "Cart", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="masp" value="@x.maSP">
+                                        <button class="cart_quantity-down"><i class="fa-solid fa-remove"></i></button>
+                                    }
                                 </td>
                             </tr>
                         }
-                            <tr>
-                                @if (cart.totalOfCartShop() != 0)
+                        <tr>
+                            @{
+                                if (cart.totalOfCartShop() != 0)
                                 {
+                                    var deliver = 0;
+                                    double sale = 1;
                                     <td>
-                                        <h5>Tạm tính: @String.Format("{0:0,00} VNĐ", @cart.totalOfCartShop())</h5>
-                                        <br />
-                                        <h5>Phí VAT(10%): @String.Format("{0:0,000} VNĐ", cart.totalOfCartShop() * 10 / 100)</h5>
-                                        <br />
-                                        <h5>Tổng: @String.Format("{0:0,000} VNĐ", (cart.totalOfCartShop() + (cart.totalOfCartShop() * 10) / 100)) </h5>
+                                        @if (cart.totalOfCartShop() > 3000000)
+                                        {
+                                            sale = 0.85;
+                                            <h5 style="color:#5cb85c">Bạn đã được giảm giá 15% cho đơn hàng trên 3.000.000</h5>
+                                        }
+                                        else if (cart.totalOfCartShop() > 1000000)
+                                        {
+                                            sale = 0.9;
+                                            <h5 style="color:#5cb85c">Bạn đã được giảm giá 10% cho đơn hàng trên 1.000.000</h5>
+                                        }
+                                        else
+                                        {
+                                            <h5 style="color:crimson">Mua thêm @String.Format("{0:0,000}", (1000000 - cart.totalOfCartShop())) để nhận giảm giá từ cửa hàng</h5>
+                                        }
+                                        <h5>Tạm tính: @String.Format("{0:0,000} VNĐ", @cart.totalOfCartShop())</h5>
+                                        <h5>
+                                            Phí giao hàng:
+                                            @{
+                                                if (cart.totalOfCartShop() < 300000)
+                                                {
+                                                    deliver = 30000;
+                                                    @String.Format("{0:0,000} VNĐ", deliver);
+                                                }
+                                                else
+                                                {
+                                                    <span style="color:#5cb85c">Miễn Phí</span>
+                                                }
+                                            }
+                                        </h5>
+                                        <h5>Tổng: @String.Format("{0:0,000} VNĐ", (cart.totalOfCartShop() * sale + deliver))</h5>
                                     </td>
                                 }
                                 else
@@ -84,8 +119,8 @@
                                         <h4>Không có sản phẩm nào</h4>
                                     </td>
                                 }
-                            </tr>
-                    }
+                            }
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -96,30 +131,28 @@
         <div class="col-md-12">
             <h3 class="text-center">Thông Tin Khách Hàng</h3>
            @using (Html.BeginForm("SaveToDataBase", "Checkout", FormMethod.Post))
-            {
+           {
                 <div class="col-md-6 form-group p_star ">
-
-                    @Html.TextBoxFor(m => m.tenKH, new { @class = "form-control", @placeholder = "Tên của bạn", @id = "Name", @name = "name" })
+                    @Html.TextBoxFor(m => m.tenKH, new { @class = "form-control", @placeholder = "Tên của bạn", @id = "Name", @name = "name", @required = "true" })
                 </div>
                 <div class="col-md-6 form-group p_star">
-
-                    @Html.TextBoxFor(m => m.soDT, new { @class = "form-control", @placeholder = "Số điện thoại", @id = "number", @name = "number" })
+                    @Html.TextBoxFor(m => m.soDT, new { @class = "form-control", @placeholder = "Số điện thoại", @id = "number", @name = "number", @required = "true" })
                 </div>
                 <div class="col-md-6 form-group p_star">
-
                     @Html.TextBoxFor(m => m.email, new { @class = "form-control", @placeholder = "Địa chỉ email", @id = "email", @name = "compemailany" })
                 </div>
                 <div class="col-md-6 form-group p_star">
-
-                    @Html.TextBoxFor(m => m.diaChi, new { @class = "form-control", @placeholder = "Địa chỉ nhận hàng", @id = "Home address", @name = "Home address" })
+                    @Html.TextBoxFor(m => m.diaChi, new { @class = "form-control", @placeholder = "Địa chỉ nhận hàng", @id = "Home address", @name = "Home address", @required = "true" })
                 </div>
                 <div class="col-md-6 form-group p_star">
                     @Html.TextAreaFor(m => m.ghiChu, new { @class = "form-control", @placeholder = "Ghi chú cho đơn hàng", @id = "Your note", @name = "message" })
                 </div>
                 <div class="col-md-6">
-                    <a class="btn btn-success" href="@Url.Action("Index","Checkout")">Đặt hàng</a>
+                    <button class="btn btn-success">
+                        Đặt hàng
+                    </button>
                 </div>
-            }
+           }
         </div>
     </div>
 </section>

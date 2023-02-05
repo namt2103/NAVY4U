@@ -28,7 +28,7 @@
                     <span>@String.Format("₫{0:0,000}", (Model.giaBan - Model.giaBan * Model.giamGia / 100))</span>
                 </span>
             </h4>
-            @using (Html.BeginForm("addToCart", "Home", FormMethod.Post))
+            @using (Html.BeginForm("addtocart", "products", FormMethod.Post))
             {
                 <input name="maSP" type="hidden" value="@Model.maSP" />
                 <button class="btn btn-primary add-to-cart">

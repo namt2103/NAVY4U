@@ -1,7 +1,7 @@
 ﻿@model NAVY4U.Models.CartShop
 @using NAVY4U.Models;
 @{
-    ViewBag.Title = "Cart";
+    ViewBag.Title = "Giỏ Hàng";
     ViewBag.active = 2;
     CartShop cart = Session["GioHang"] as CartShop;
 }
@@ -12,7 +12,8 @@
             <div>
                 <nav aria-label="breadcrumb" class="banner-breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="@Url.Action("index", "Home")">Trang Chủ</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang Chủ</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "products")">Sản phẩm</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Giỏ Hàng</li>
                     </ol>
                 </nav>
@@ -56,7 +57,7 @@
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                    <div style="display:flex;justify-content:center">
+                                    <div style="display:flex;justify-content:center;margin: 10px 0;">
                                         @using (Html.BeginForm("Decrease", "Cart", FormMethod.Post))
                                         {
                                             <input type="hidden" name="masp" value="@x.maSP">
@@ -83,25 +84,51 @@
                                    @using (Html.BeginForm("RemoveTtem", "Cart", FormMethod.Post))
                                     {
                                         <input type="hidden" name="masp" value="@x.maSP">
-                                        <button class="cart_quantity-down">X</button>
+                                        <button class="cart_quantity-down"><i class="fa-solid fa-remove"></i></button>
                                     }
                                 </td>
                             </tr>
                         }
                         <tr>
                         @{ 
-                            if(cart.totalOfCartShop() != 0) 
-                            { 
+                            if (cart.totalOfCartShop() != 0)
+                            {
+                                var deliver = 0;
+                                double sale = 1;
                                 <td>
-                                    <h5>Tạm tính: @String.Format("{0:0,00} VNĐ", @cart.totalOfCartShop())</h5>
-                                    <br />
-                                    <h5>Phí VAT(10%): @String.Format("{0:0,000} VNĐ", cart.totalOfCartShop() * 10 / 100)</h5>
-                                    <br />
-                                    <h5>Tổng: @String.Format("{0:0,000} VNĐ", (cart.totalOfCartShop() + (cart.totalOfCartShop() * 10) / 100)) </h5>
+                                    @if (cart.totalOfCartShop() > 3000000) 
+                                    { 
+                                        sale = 0.85;
+                                        <h5 style="color:#5cb85c">Bạn đã được giảm giá 15% cho đơn hàng trên 3.000.000</h5>
+                                    }
+                                    else if (cart.totalOfCartShop() > 1000000)
+                                    {
+                                        sale = 0.9;
+                                        <h5 style="color:#5cb85c">Bạn đã được giảm giá 10% cho đơn hàng trên 1.000.000</h5>
+                                    }
+                                    else
+                                    {
+                                        <h5 style="color:crimson">Mua thêm @String.Format("{0:0,000}", (1000000 - cart.totalOfCartShop())) để nhận giảm giá từ cửa hàng</h5>
+                                    }
+                                    <h5>Tạm tính: @String.Format("{0:0,000} VNĐ", @cart.totalOfCartShop())</h5>
+                                    <h5>Phí giao hàng: 
+                                    @{ 
+                                        if (cart.totalOfCartShop() < 300000)
+                                        {
+                                            deliver = 30000;
+                                            @String.Format("{0:0,000} VNĐ", deliver);
+                                        }
+                                        else
+                                        {
+                                            <span style="color:#5cb85c">Miễn Phí</span>
+                                        }
+                                    }
+                                    </h5>
+                                    <h5>Tổng: @String.Format("{0:0,000} VNĐ", (cart.totalOfCartShop() * sale + deliver))</h5>
                                 </td>
                             }
-                            else 
-                            { 
+                            else
+                            {
                                 <td>
                                     <h4>Không có sản phẩm nào</h4>
                                 </td>

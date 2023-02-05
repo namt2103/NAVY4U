@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using NAVY4U.Models;
+@{
+    CartShop cart = Session["GioHang"] as CartShop;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -12,7 +17,7 @@
     <link href="~/Content/animate.css" rel="stylesheet">
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
-    <link href="~/Content/media.css" rel="stylesheet" />
+    <link href="~/Content/responsive.css" rel="stylesheet" />
 </head><!--/head-->
 
 <body>
@@ -30,21 +35,31 @@
                         </div>
                     </div>
                     <div class="col-md-10 clearfix">
-                        <div class="shop-menu pull-right d-flex align-items-center justify-content-center">
+                        <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="@Url.Action("Index", "Checkout")"><i class="fa fa-money"></i>Thanh toán</a></li>
-                                <li><a href="@Url.Action("Index", "Cart")"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
+                                <li><a href="@Url.Action("Index", "checkout")"><i class="fa fa-money"></i>Thanh toán</a></li>
+                                <li style="display:flex">
+                                    <a href="@Url.Action("Index", "cart")">
+                                        Giỏ hàng
+                                    </a>
+                                        <div class="countCart text-center">
+                                            @{
+                                                var x1 = cart.productsCart.Count();
+                                                @x1;
+                                            }
+                                        </div>
+                                </li>
                                 <li><a href="@Url.Action("Index", "login")"><i class="fa fa-user"></i>Đăng nhập</a></li>
                             </ul>
                         </div>
-                        @using (Html.BeginForm("Index", "search",FormMethod.Post))
+                        @using (Html.BeginForm("Index", "search", FormMethod.Post))
                         {
                             <div class="searchbar pull-right">
                                 @Html.TextBox("q", "", new { @class = "search_input", @placeholder = "Tìm kiếm trong cửa hàng" })
-                                <button  class="search_icon" type="submit" value="Tìm kiếm"><i class="fa-solid fa-search"></i></button>
+                                <button class="search_icon" type="submit" value="Tìm kiếm"><i class="fa-solid fa-search"></i></button>
                             </div>
                         }
-                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-9">
@@ -62,22 +77,32 @@
                                     <a href="#">Cửa hàng<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="@Url.Action("Index", "products")">Sản phẩm</a></li>
+                                        <li style="display:flex; margin-top:4px">
+                                            <a href="@Url.Action("Index", "cart")">
+                                                Giỏ hàng
+                                            </a>
+                                            <div class="countCart" style="margin-top:3px;display: flex; justify-content: center;">
+                                            @{
+                                                var x2 = cart.productsCart.Count();
+                                                @x2;
+                                            }
+                                            </div>
+                                        </li>
                                         <li><a href="@Url.Action("Index", "checkout")">Thanh toán</a></li>
-                                        <li><a href="@Url.Action("Index", "cart")">Giỏ hàng</a></li>
                                         <li><a href="@Url.Action("Index", "login")">Đăng nhập</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="#">Bài viết<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="@Url.Action("Index","ArticleList")">Danh sách bài viết</a></li>
+                                        <li><a href="@Url.Action("Index","articlelist")">Danh sách bài viết</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div><!--/header-middle-->

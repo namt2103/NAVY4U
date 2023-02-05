@@ -34,11 +34,19 @@
 /* sm */
 
 @media (min-width: 768px) and (max-width: 991px) {
+    .searchbar > .search_input {
+        width: 400px;
+    }
+        .searchbar:hover > .search_input,
+        .searchbar > .search_input:focus {
+            width: 400px;
+        }
     .search-block {
         display: flex;
         justify-content: center;
         width: 80vw;
     }
+
     .shop-menu {
         display: block;
         width: 100%;
@@ -140,14 +148,23 @@
 /* xs */
 
 @media (max-width: 767px) {
-    .row .search-block, .shop-menu {
+    .searchbar > .search_input {
+        width: 280px;
+    }
+        .searchbar:hover > .search_input,
+        .searchbar > .search_input:focus {
+            width: 280px;
+        }
+    .shop-menu {
         display: none;
     }
+
     .col-md-10 {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
+
     .navbar-toggle {
         position: absolute;
         border: 1px solid transparent;
@@ -183,11 +200,12 @@
     }
 
 
-    .shop-menu ul {
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-    }
+        .shop-menu ul {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
     .header_top .col-sm-6:first-child {
         display: inline-block;
         float: left;
@@ -345,9 +363,15 @@
 /* XS Portrait */
 
 @media (max-width: 480px) {
-    .row .search-block {
-        display: none;
+
+    .searchbar > .search_input {
+        width: 220px;
     }
+    .searchbar:hover > .search_input,
+    .searchbar > .search_input:focus {
+        width: 220px;
+    }
+
     .navbar-toggle {
         position: absolute;
         bottom: 100%;
@@ -391,10 +415,10 @@
         text-align: center;
     }
 
-    .contactinfo ul li a {
-        padding-right: 15px;
-        padding-left: 0;
-    }
+        .contactinfo ul li a {
+            padding-right: 15px;
+            padding-left: 0;
+        }
 
     .btn-group.pull-right,
     .footer-bottom .pull-left,
@@ -425,12 +449,14 @@
         width: 100%;
         margin: 12px 0;
     }
+
     .shop-menu {
         display: none;
     }
-    .shop-menu ul li {
-        padding: 0 5px;
-    }
+
+        .shop-menu ul li {
+            padding: 0 5px;
+        }
 
     .header-middle .col-sm-4 {
         text-align: center;

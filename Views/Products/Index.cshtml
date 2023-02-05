@@ -30,7 +30,7 @@
                                     </span>
                                 </h4>
                                 <a href="@Url.Action("detail", "products", new {tenSP = item.tenSP})"><p>@item.tenSP</p></a>
-                                @using (Html.BeginForm("addToCart", "Home", FormMethod.Post)) 
+                                @using (Html.BeginForm("addtocart", "products", FormMethod.Post)) 
                                     {
                                         <input name="maSP" type="hidden" value="@item.maSP"/>
                                         <button class="btn btn-primary add-to-cart">

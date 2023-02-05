@@ -114,8 +114,6 @@ namespace NAVY4U.Models
             long total = 0;
             foreach (var item in productsCart.Values)
                 total += moneyOfProduct(item);
-            if(total >= 300000)
-                total += 20000;
             return total;
         }
     }

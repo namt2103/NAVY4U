@@ -66,7 +66,7 @@
                                         </span>
                                     </h4>
                                     <a href="@Url.Action("detail", "products", new {tenSP = item.tenSP})"><p>@item.tenSP</p></a>
-                                    @using (Html.BeginForm("addToCart", "Home", FormMethod.Post)) 
+                                    @using (Html.BeginForm("addtocart", "home", FormMethod.Post)) 
                                     {
                                         <input name="maSP" type="hidden" value="@item.maSP"/>
                                         <button class="btn btn-primary add-to-cart">
@@ -150,7 +150,7 @@
                                                     </span>
                                                 </h4>
                                                 <a href="@Url.Action("detail", "products", new {tenSP = item2.tenSP})"><p>@item2.tenSP</p></a>
-                                                @using (Html.BeginForm("addToCart", "Home", FormMethod.Post))
+                                                @using (Html.BeginForm("addtocart", "home", FormMethod.Post))
                                                 {
                                                     <input name="maSP" type="hidden" value="@item2.maSP" />
                                                     <button class="btn btn-primary add-to-cart">
@@ -186,7 +186,7 @@
                                                     </span>
                                                 </h4>
                                                 <a href="@Url.Action("detail", "products", new {tenSP = item2.tenSP})"><p>@item2.tenSP</p></a>
-                                                @using (Html.BeginForm("addToCart", "Home", FormMethod.Post))
+                                                @using (Html.BeginForm("addtocart", "Home", FormMethod.Post))
                                                 {
                                                     <input name="maSP" type="hidden" value="@item2.maSP" />
                                                     <button class="btn btn-primary add-to-cart">

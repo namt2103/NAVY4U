@@ -20,5 +20,12 @@ namespace NAVY4U.Controllers
             var pro = bh.sanPhams.Where(x => x.tenSP == tenSP).FirstOrDefault();
             return View(pro);
         }
+        public ActionResult addToCart(string maSP)
+        {
+            CartShop gioHang = Session["GioHang"] as CartShop;
+            gioHang.addItem(maSP);
+            Session["GioHang"] = gioHang;
+            return View("Index");
+        }
     }
 }
