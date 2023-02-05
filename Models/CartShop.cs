@@ -91,7 +91,6 @@ namespace NAVY4U.Models
                 if (x.soLuong > 1)
                 {
                     x.soLuong--;
-                    productsCart.Values[productsCart.IndexOfKey(maSP)] = x;
                 }
                 else
                     deleteItem(maSP);

@@ -55,9 +55,9 @@ namespace ProjectFinal1.Controllers
                         //update donHang infor to donHangS object you have just create before
                         or.soDH = string.Format("{0:yyMMddhhmm}", DateTime.Now);
                         or.maKH = x.maKH;
-                        or.ngayDat = DateTime.Now; or.ngayGH = DateTime.Now.AddDays(7);
+                        or.ngayDat = DateTime.Now; or.ngayGH = DateTime.Now.AddDays(3);
                         or.ghiChu = x.ghiChu;
-                        or.taiKhoan = "ADMIN";
+                        or.taiKhoan = "admin";
                         or.diaChiGH = x.diaChi;
 
 
