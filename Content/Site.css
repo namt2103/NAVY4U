@@ -733,11 +733,6 @@ h2.title {
     position: relative;
 }
 
-
-
-
-
-
 .nav-tabs li.active a,
 .nav-tabs li.active a:hover,
 .nav-tabs li.active a:focus {
@@ -751,13 +746,6 @@ h2.title {
     margin-right: 0;
     margin-left: 0;
 }
-
-
-
-/*************************
-*******Shop CSS******
-**************************/
-
 
 /*************************
 *******Product Details CSS******
@@ -1003,10 +991,6 @@ h2.title {
 /*************************
 *******Cart CSS******
 **************************/
-
-#do_action {
-    margin-bottom: 50px;
-}
 
 .breadcrumbs {
     position: relative;
@@ -1791,7 +1775,7 @@ h2.title {
 }
 
 
-.btn.btn-primary.add-to-cart {
+button.btn.btn-primary.add-to-cart {
     color: #ED4D2B;
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;
@@ -1799,15 +1783,11 @@ h2.title {
     margin-bottom: 16px;
 }
 
-    .btn.btn-primary.add-to-cart:hover {
+    button.btn.btn-primary.add-to-cart:hover {
         border-radius: 4px;
         color: #fff;
         background: #ED4D2B
     }
-
-.add-to {
-    margin-bottom: 10px;
-}
 
 .add-to-cart i {
     margin-right: 5px;

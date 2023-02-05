@@ -115,6 +115,7 @@
     <Content Include="Content\prettyPhoto.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\StyleSheet1.css" />
     <Content Include="fonts\all.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
