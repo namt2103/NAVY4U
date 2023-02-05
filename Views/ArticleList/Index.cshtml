@@ -1,0 +1,23 @@
+﻿@using NAVY4U.Models;
+@{
+    ViewBag.Title = "Danh sách bài viết";
+}
+
+<div class="container">
+    <h2 class="text-center">Danh Sách Bài Viết</h2>
+    @foreach (var x in Common.getBaiViet())
+    {
+        <div class="m-4">
+            <h3>
+                <a href="#">@x.tenBV</a>
+            </h3>
+            <div class="dflex col-md-12">
+                <a class="" href="#">
+                    <img width="300" src="@x.hinhDD" />
+                </a>
+                <div class="">@x.ndTomTat</div>
+            </div>
+        </div>
+    }
+</div>
+

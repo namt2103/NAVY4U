@@ -10,6 +10,7 @@ namespace NAVY4U.Controllers
     public class SearchController : Controller
     {
         // GET: Search
+        [HttpPost]
         public ActionResult Index(string q)
         {
             BanHangOnlineEntities bh = new BanHangOnlineEntities();

@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="~/images/icons/navyf4-ico.png">
     <link href="~/Content/all.min.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/font-awesome.min.css" rel="stylesheet">
-    <link href="~/Content/prettyPhoto.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/animate.css" rel="stylesheet">
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/media.css" rel="stylesheet" />
 </head><!--/head-->
 
@@ -37,7 +37,7 @@
                                 <li><a href="@Url.Action("Index", "login")"><i class="fa fa-user"></i>Đăng nhập</a></li>
                             </ul>
                         </div>
-                        @using (Html.BeginForm("Index", "search"))
+                        @using (Html.BeginForm("Index", "search",FormMethod.Post))
                         {
                             <div class="searchbar pull-right">
                                 @Html.TextBox("q", "", new { @class = "search_input", @placeholder = "Tìm kiếm trong cửa hàng" })
@@ -70,7 +70,7 @@
                                 <li class="dropdown">
                                     <a href="#">Bài viết<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="#">Danh sách bài viết</a></li>
+                                        <li><a href="@Url.Action("Index","ArticleList")">Danh sách bài viết</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Liên hệ</a></li>

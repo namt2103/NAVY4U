@@ -60,11 +60,23 @@ namespace NAVY4U.Models
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
-        public static List<baiViet> getArticles(int n)
+        public static List<baiViet> getBaiViet(int n)
         {
             List<baiViet> l = new List<baiViet>();
             BanHangOnlineEntities db = new BanHangOnlineEntities();
             l = db.baiViets.OrderByDescending(bv => bv.ngayDang).Take(n).ToList<baiViet>();
+            return l;
+        }
+        /// <summary>
+        /// Lấy ra tất cả bài viết từ database
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static List<baiViet> getBaiViet()
+        {
+            List<baiViet> l = new List<baiViet>();
+            BanHangOnlineEntities db = new BanHangOnlineEntities();
+            l = db.baiViets.OrderByDescending(bv => bv.ngayDang).ToList<baiViet>();
             return l;
         }
 
