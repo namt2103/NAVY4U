@@ -1,0 +1,788 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BanHangOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="baiViet">
+          <Key>
+            <PropertyRef Name="maBV" />
+          </Key>
+          <Property Name="maBV" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="tenBV" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="hinhDD" Type="varchar(max)" />
+          <Property Name="ndTomTat" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ngayDang" Type="datetime" />
+          <Property Name="noiDung" Type="nvarchar" MaxLength="4000" />
+          <Property Name="taiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="daDuyet" Type="bit" />
+          <Property Name="maLoai" Type="int" />
+        </EntityType>
+        <EntityType Name="ctDonHang">
+          <Key>
+            <PropertyRef Name="soDH" />
+            <PropertyRef Name="maSP" />
+          </Key>
+          <Property Name="soDH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="maSP" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="soLuong" Type="int" />
+          <Property Name="giaBan" Type="bigint" />
+          <Property Name="giamGia" Type="bigint" />
+        </EntityType>
+        <EntityType Name="donHang">
+          <Key>
+            <PropertyRef Name="soDH" />
+          </Key>
+          <Property Name="soDH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="maKH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="taiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ngayDat" Type="datetime" />
+          <Property Name="daKichHoat" Type="bit" />
+          <Property Name="ngayGH" Type="datetime" />
+          <Property Name="diaChiGH" Type="nvarchar" MaxLength="250" />
+          <Property Name="ghiChu" Type="ntext" />
+        </EntityType>
+        <EntityType Name="khachHang">
+          <Key>
+            <PropertyRef Name="maKH" />
+          </Key>
+          <Property Name="maKH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="tenKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="soDT" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="diaChi" Type="nvarchar" MaxLength="250" />
+          <Property Name="ngaySinh" Type="datetime" />
+          <Property Name="gioiTinh" Type="bit" />
+          <Property Name="ghiChu" Type="ntext" />
+          <Property Name="maQH" Type="int" />
+        </EntityType>
+        <EntityType Name="loaiSP">
+          <Key>
+            <PropertyRef Name="maLoai" />
+          </Key>
+          <Property Name="maLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="loaiSP" Type="nvarchar" MaxLength="88" Nullable="false" />
+          <Property Name="ghiChu" Type="ntext" />
+        </EntityType>
+        <EntityType Name="nhomTk">
+          <Key>
+            <PropertyRef Name="maNhom" />
+          </Key>
+          <Property Name="maNhom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenNhom" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="ghiChu" Type="ntext" />
+        </EntityType>
+        <EntityType Name="quanHuyen">
+          <Key>
+            <PropertyRef Name="maQH" />
+          </Key>
+          <Property Name="maQH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenQH" Type="nvarchar" MaxLength="88" Nullable="false" />
+          <Property Name="tinhThanh" Type="nvarchar" MaxLength="65" Nullable="false" />
+          <Property Name="ghiChu" Type="ntext" />
+        </EntityType>
+        <EntityType Name="sanPham">
+          <Key>
+            <PropertyRef Name="maSP" />
+          </Key>
+          <Property Name="maSP" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="tenSP" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="hinhDD" Type="varchar(max)" />
+          <Property Name="ndTomTat" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ngayDang" Type="datetime" />
+          <Property Name="loaiHang" Type="nvarchar" MaxLength="30" />
+          <Property Name="noiDung" Type="nvarchar" MaxLength="4000" />
+          <Property Name="taiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="daDuyet" Type="bit" />
+          <Property Name="giaBan" Type="int" />
+          <Property Name="giamGia" Type="int" />
+          <Property Name="maLoai" Type="int" />
+          <Property Name="nhaSanXuat" Type="nvarchar" MaxLength="89" />
+          <Property Name="dvt" Type="nvarchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="taiKhoanTV">
+          <Key>
+            <PropertyRef Name="taiKhoan" />
+          </Key>
+          <Property Name="taiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="matKhau" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="hoDem" Type="nvarchar" MaxLength="50" />
+          <Property Name="tenTV" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ngaysinh" Type="datetime" />
+          <Property Name="gioiTinh" Type="bit" />
+          <Property Name="soDT" Type="nvarchar" MaxLength="20" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="diaChi" Type="nvarchar" MaxLength="250" />
+          <Property Name="trangThai" Type="bit" />
+          <Property Name="ghiChu" Type="ntext" />
+          <Property Name="maNhom" Type="int" />
+          <Property Name="maQH" Type="int" />
+        </EntityType>
+        <Association Name="FK__baiViet__maLoai__5EBF139D">
+          <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="0..1" />
+          <End Role="baiViet" Type="Self.baiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaiSP">
+              <PropertyRef Name="maLoai" />
+            </Principal>
+            <Dependent Role="baiViet">
+              <PropertyRef Name="maLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__baiViet__taiKhoa__5FB337D6">
+          <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="1" />
+          <End Role="baiViet" Type="Self.baiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="taiKhoanTV">
+              <PropertyRef Name="taiKhoan" />
+            </Principal>
+            <Dependent Role="baiViet">
+              <PropertyRef Name="taiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ctDonHang__maSP__60A75C0F">
+          <End Role="sanPham" Type="Self.sanPham" Multiplicity="1" />
+          <End Role="ctDonHang" Type="Self.ctDonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sanPham">
+              <PropertyRef Name="maSP" />
+            </Principal>
+            <Dependent Role="ctDonHang">
+              <PropertyRef Name="maSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ctDonHang__soDH__619B8048">
+          <End Role="donHang" Type="Self.donHang" Multiplicity="1" />
+          <End Role="ctDonHang" Type="Self.ctDonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="donHang">
+              <PropertyRef Name="soDH" />
+            </Principal>
+            <Dependent Role="ctDonHang">
+              <PropertyRef Name="soDH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__donHang__maKH__628FA481">
+          <End Role="khachHang" Type="Self.khachHang" Multiplicity="1" />
+          <End Role="donHang" Type="Self.donHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachHang">
+              <PropertyRef Name="maKH" />
+            </Principal>
+            <Dependent Role="donHang">
+              <PropertyRef Name="maKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__donHang__taiKhoa__6383C8BA">
+          <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="1" />
+          <End Role="donHang" Type="Self.donHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="taiKhoanTV">
+              <PropertyRef Name="taiKhoan" />
+            </Principal>
+            <Dependent Role="donHang">
+              <PropertyRef Name="taiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__khachHang__maQH__6477ECF3">
+          <End Role="quanHuyen" Type="Self.quanHuyen" Multiplicity="0..1" />
+          <End Role="khachHang" Type="Self.khachHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quanHuyen">
+              <PropertyRef Name="maQH" />
+            </Principal>
+            <Dependent Role="khachHang">
+              <PropertyRef Name="maQH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sanPham__maLoai__656C112C">
+          <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="0..1" />
+          <End Role="sanPham" Type="Self.sanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaiSP">
+              <PropertyRef Name="maLoai" />
+            </Principal>
+            <Dependent Role="sanPham">
+              <PropertyRef Name="maLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sanPham__taiKhoa__66603565">
+          <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="1" />
+          <End Role="sanPham" Type="Self.sanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="taiKhoanTV">
+              <PropertyRef Name="taiKhoan" />
+            </Principal>
+            <Dependent Role="sanPham">
+              <PropertyRef Name="taiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__taiKhoanT__maNho__6754599E">
+          <End Role="nhomTk" Type="Self.nhomTk" Multiplicity="0..1" />
+          <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nhomTk">
+              <PropertyRef Name="maNhom" />
+            </Principal>
+            <Dependent Role="taiKhoanTV">
+              <PropertyRef Name="maNhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__taiKhoanTV__maQH__68487DD7">
+          <End Role="quanHuyen" Type="Self.quanHuyen" Multiplicity="0..1" />
+          <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quanHuyen">
+              <PropertyRef Name="maQH" />
+            </Principal>
+            <Dependent Role="taiKhoanTV">
+              <PropertyRef Name="maQH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BanHangOnlineModelStoreContainer">
+          <EntitySet Name="baiViet" EntityType="Self.baiViet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ctDonHang" EntityType="Self.ctDonHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="donHang" EntityType="Self.donHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="khachHang" EntityType="Self.khachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loaiSP" EntityType="Self.loaiSP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nhomTk" EntityType="Self.nhomTk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="quanHuyen" EntityType="Self.quanHuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sanPham" EntityType="Self.sanPham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="taiKhoanTV" EntityType="Self.taiKhoanTV" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__baiViet__maLoai__5EBF139D" Association="Self.FK__baiViet__maLoai__5EBF139D">
+            <End Role="loaiSP" EntitySet="loaiSP" />
+            <End Role="baiViet" EntitySet="baiViet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__baiViet__taiKhoa__5FB337D6" Association="Self.FK__baiViet__taiKhoa__5FB337D6">
+            <End Role="taiKhoanTV" EntitySet="taiKhoanTV" />
+            <End Role="baiViet" EntitySet="baiViet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ctDonHang__maSP__60A75C0F" Association="Self.FK__ctDonHang__maSP__60A75C0F">
+            <End Role="sanPham" EntitySet="sanPham" />
+            <End Role="ctDonHang" EntitySet="ctDonHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ctDonHang__soDH__619B8048" Association="Self.FK__ctDonHang__soDH__619B8048">
+            <End Role="donHang" EntitySet="donHang" />
+            <End Role="ctDonHang" EntitySet="ctDonHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__donHang__maKH__628FA481" Association="Self.FK__donHang__maKH__628FA481">
+            <End Role="khachHang" EntitySet="khachHang" />
+            <End Role="donHang" EntitySet="donHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__donHang__taiKhoa__6383C8BA" Association="Self.FK__donHang__taiKhoa__6383C8BA">
+            <End Role="taiKhoanTV" EntitySet="taiKhoanTV" />
+            <End Role="donHang" EntitySet="donHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__khachHang__maQH__6477ECF3" Association="Self.FK__khachHang__maQH__6477ECF3">
+            <End Role="quanHuyen" EntitySet="quanHuyen" />
+            <End Role="khachHang" EntitySet="khachHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sanPham__maLoai__656C112C" Association="Self.FK__sanPham__maLoai__656C112C">
+            <End Role="loaiSP" EntitySet="loaiSP" />
+            <End Role="sanPham" EntitySet="sanPham" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sanPham__taiKhoa__66603565" Association="Self.FK__sanPham__taiKhoa__66603565">
+            <End Role="taiKhoanTV" EntitySet="taiKhoanTV" />
+            <End Role="sanPham" EntitySet="sanPham" />
+          </AssociationSet>
+          <AssociationSet Name="FK__taiKhoanT__maNho__6754599E" Association="Self.FK__taiKhoanT__maNho__6754599E">
+            <End Role="nhomTk" EntitySet="nhomTk" />
+            <End Role="taiKhoanTV" EntitySet="taiKhoanTV" />
+          </AssociationSet>
+          <AssociationSet Name="FK__taiKhoanTV__maQH__68487DD7" Association="Self.FK__taiKhoanTV__maQH__68487DD7">
+            <End Role="quanHuyen" EntitySet="quanHuyen" />
+            <End Role="taiKhoanTV" EntitySet="taiKhoanTV" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BanHangOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="baiViet">
+          <Key>
+            <PropertyRef Name="maBV" />
+          </Key>
+          <Property Name="maBV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tenBV" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hinhDD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ndTomTat" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ngayDang" Type="DateTime" Precision="3" />
+          <Property Name="noiDung" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="taiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="daDuyet" Type="Boolean" />
+          <Property Name="maLoai" Type="Int32" />
+          <NavigationProperty Name="loaiSP" Relationship="Self.FK__baiViet__maLoai__5EBF139D" FromRole="baiViet" ToRole="loaiSP" />
+          <NavigationProperty Name="taiKhoanTV" Relationship="Self.FK__baiViet__taiKhoa__5FB337D6" FromRole="baiViet" ToRole="taiKhoanTV" />
+        </EntityType>
+        <EntityType Name="ctDonHang">
+          <Key>
+            <PropertyRef Name="soDH" />
+            <PropertyRef Name="maSP" />
+          </Key>
+          <Property Name="soDH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="maSP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soLuong" Type="Int32" />
+          <Property Name="giaBan" Type="Int64" />
+          <Property Name="giamGia" Type="Int64" />
+          <NavigationProperty Name="sanPham" Relationship="Self.FK__ctDonHang__maSP__60A75C0F" FromRole="ctDonHang" ToRole="sanPham" />
+          <NavigationProperty Name="donHang" Relationship="Self.FK__ctDonHang__soDH__619B8048" FromRole="ctDonHang" ToRole="donHang" />
+        </EntityType>
+        <EntityType Name="donHang">
+          <Key>
+            <PropertyRef Name="soDH" />
+          </Key>
+          <Property Name="soDH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="maKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="taiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ngayDat" Type="DateTime" Precision="3" />
+          <Property Name="daKichHoat" Type="Boolean" />
+          <Property Name="ngayGH" Type="DateTime" Precision="3" />
+          <Property Name="diaChiGH" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ghiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ctDonHangs" Relationship="Self.FK__ctDonHang__soDH__619B8048" FromRole="donHang" ToRole="ctDonHang" />
+          <NavigationProperty Name="khachHang" Relationship="Self.FK__donHang__maKH__628FA481" FromRole="donHang" ToRole="khachHang" />
+          <NavigationProperty Name="taiKhoanTV" Relationship="Self.FK__donHang__taiKhoa__6383C8BA" FromRole="donHang" ToRole="taiKhoanTV" />
+        </EntityType>
+        <EntityType Name="khachHang">
+          <Key>
+            <PropertyRef Name="maKH" />
+          </Key>
+          <Property Name="maKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="soDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="diaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ngaySinh" Type="DateTime" Precision="3" />
+          <Property Name="gioiTinh" Type="Boolean" />
+          <Property Name="ghiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="maQH" Type="Int32" />
+          <NavigationProperty Name="donHangs" Relationship="Self.FK__donHang__maKH__628FA481" FromRole="khachHang" ToRole="donHang" />
+          <NavigationProperty Name="quanHuyen" Relationship="Self.FK__khachHang__maQH__6477ECF3" FromRole="khachHang" ToRole="quanHuyen" />
+        </EntityType>
+        <EntityType Name="loaiSP">
+          <Key>
+            <PropertyRef Name="maLoai" />
+          </Key>
+          <Property Name="maLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="loaiSP1" Type="String" MaxLength="88" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ghiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="baiViets" Relationship="Self.FK__baiViet__maLoai__5EBF139D" FromRole="loaiSP" ToRole="baiViet" />
+          <NavigationProperty Name="sanPhams" Relationship="Self.FK__sanPham__maLoai__656C112C" FromRole="loaiSP" ToRole="sanPham" />
+        </EntityType>
+        <EntityType Name="nhomTk">
+          <Key>
+            <PropertyRef Name="maNhom" />
+          </Key>
+          <Property Name="maNhom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenNhom" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ghiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="taiKhoanTVs" Relationship="Self.FK__taiKhoanT__maNho__6754599E" FromRole="nhomTk" ToRole="taiKhoanTV" />
+        </EntityType>
+        <EntityType Name="quanHuyen">
+          <Key>
+            <PropertyRef Name="maQH" />
+          </Key>
+          <Property Name="maQH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenQH" Type="String" MaxLength="88" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tinhThanh" Type="String" MaxLength="65" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ghiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="khachHangs" Relationship="Self.FK__khachHang__maQH__6477ECF3" FromRole="quanHuyen" ToRole="khachHang" />
+          <NavigationProperty Name="taiKhoanTVs" Relationship="Self.FK__taiKhoanTV__maQH__68487DD7" FromRole="quanHuyen" ToRole="taiKhoanTV" />
+        </EntityType>
+        <EntityType Name="sanPham">
+          <Key>
+            <PropertyRef Name="maSP" />
+          </Key>
+          <Property Name="maSP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tenSP" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hinhDD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ndTomTat" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ngayDang" Type="DateTime" Precision="3" />
+          <Property Name="loaiHang" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="noiDung" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="taiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="daDuyet" Type="Boolean" />
+          <Property Name="giaBan" Type="Int32" />
+          <Property Name="giamGia" Type="Int32" />
+          <Property Name="maLoai" Type="Int32" />
+          <Property Name="nhaSanXuat" Type="String" MaxLength="89" FixedLength="false" Unicode="true" />
+          <Property Name="dvt" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ctDonHangs" Relationship="Self.FK__ctDonHang__maSP__60A75C0F" FromRole="sanPham" ToRole="ctDonHang" />
+          <NavigationProperty Name="loaiSP" Relationship="Self.FK__sanPham__maLoai__656C112C" FromRole="sanPham" ToRole="loaiSP" />
+          <NavigationProperty Name="taiKhoanTV" Relationship="Self.FK__sanPham__taiKhoa__66603565" FromRole="sanPham" ToRole="taiKhoanTV" />
+        </EntityType>
+        <EntityType Name="taiKhoanTV">
+          <Key>
+            <PropertyRef Name="taiKhoan" />
+          </Key>
+          <Property Name="taiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matKhau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hoDem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tenTV" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ngaysinh" Type="DateTime" Precision="3" />
+          <Property Name="gioiTinh" Type="Boolean" />
+          <Property Name="soDT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="trangThai" Type="Boolean" />
+          <Property Name="ghiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="maNhom" Type="Int32" />
+          <Property Name="maQH" Type="Int32" />
+          <NavigationProperty Name="baiViets" Relationship="Self.FK__baiViet__taiKhoa__5FB337D6" FromRole="taiKhoanTV" ToRole="baiViet" />
+          <NavigationProperty Name="donHangs" Relationship="Self.FK__donHang__taiKhoa__6383C8BA" FromRole="taiKhoanTV" ToRole="donHang" />
+          <NavigationProperty Name="nhomTk" Relationship="Self.FK__taiKhoanT__maNho__6754599E" FromRole="taiKhoanTV" ToRole="nhomTk" />
+          <NavigationProperty Name="quanHuyen" Relationship="Self.FK__taiKhoanTV__maQH__68487DD7" FromRole="taiKhoanTV" ToRole="quanHuyen" />
+          <NavigationProperty Name="sanPhams" Relationship="Self.FK__sanPham__taiKhoa__66603565" FromRole="taiKhoanTV" ToRole="sanPham" />
+        </EntityType>
+        <Association Name="FK__baiViet__maLoai__5EBF139D">
+          <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="0..1" />
+          <End Role="baiViet" Type="Self.baiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaiSP">
+              <PropertyRef Name="maLoai" />
+            </Principal>
+            <Dependent Role="baiViet">
+              <PropertyRef Name="maLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__baiViet__taiKhoa__5FB337D6">
+          <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="1" />
+          <End Role="baiViet" Type="Self.baiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="taiKhoanTV">
+              <PropertyRef Name="taiKhoan" />
+            </Principal>
+            <Dependent Role="baiViet">
+              <PropertyRef Name="taiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ctDonHang__maSP__60A75C0F">
+          <End Role="sanPham" Type="Self.sanPham" Multiplicity="1" />
+          <End Role="ctDonHang" Type="Self.ctDonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sanPham">
+              <PropertyRef Name="maSP" />
+            </Principal>
+            <Dependent Role="ctDonHang">
+              <PropertyRef Name="maSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ctDonHang__soDH__619B8048">
+          <End Role="donHang" Type="Self.donHang" Multiplicity="1" />
+          <End Role="ctDonHang" Type="Self.ctDonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="donHang">
+              <PropertyRef Name="soDH" />
+            </Principal>
+            <Dependent Role="ctDonHang">
+              <PropertyRef Name="soDH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__donHang__maKH__628FA481">
+          <End Role="khachHang" Type="Self.khachHang" Multiplicity="1" />
+          <End Role="donHang" Type="Self.donHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachHang">
+              <PropertyRef Name="maKH" />
+            </Principal>
+            <Dependent Role="donHang">
+              <PropertyRef Name="maKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__donHang__taiKhoa__6383C8BA">
+          <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="1" />
+          <End Role="donHang" Type="Self.donHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="taiKhoanTV">
+              <PropertyRef Name="taiKhoan" />
+            </Principal>
+            <Dependent Role="donHang">
+              <PropertyRef Name="taiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__khachHang__maQH__6477ECF3">
+          <End Role="quanHuyen" Type="Self.quanHuyen" Multiplicity="0..1" />
+          <End Role="khachHang" Type="Self.khachHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quanHuyen">
+              <PropertyRef Name="maQH" />
+            </Principal>
+            <Dependent Role="khachHang">
+              <PropertyRef Name="maQH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sanPham__maLoai__656C112C">
+          <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="0..1" />
+          <End Role="sanPham" Type="Self.sanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaiSP">
+              <PropertyRef Name="maLoai" />
+            </Principal>
+            <Dependent Role="sanPham">
+              <PropertyRef Name="maLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__taiKhoanT__maNho__6754599E">
+          <End Role="nhomTk" Type="Self.nhomTk" Multiplicity="0..1" />
+          <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nhomTk">
+              <PropertyRef Name="maNhom" />
+            </Principal>
+            <Dependent Role="taiKhoanTV">
+              <PropertyRef Name="maNhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__taiKhoanTV__maQH__68487DD7">
+          <End Role="quanHuyen" Type="Self.quanHuyen" Multiplicity="0..1" />
+          <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quanHuyen">
+              <PropertyRef Name="maQH" />
+            </Principal>
+            <Dependent Role="taiKhoanTV">
+              <PropertyRef Name="maQH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sanPham__taiKhoa__66603565">
+          <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="1" />
+          <End Role="sanPham" Type="Self.sanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="taiKhoanTV">
+              <PropertyRef Name="taiKhoan" />
+            </Principal>
+            <Dependent Role="sanPham">
+              <PropertyRef Name="taiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BanHangOnlineEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="baiViets" EntityType="Self.baiViet" />
+          <EntitySet Name="ctDonHangs" EntityType="Self.ctDonHang" />
+          <EntitySet Name="donHangs" EntityType="Self.donHang" />
+          <EntitySet Name="khachHangs" EntityType="Self.khachHang" />
+          <EntitySet Name="loaiSPs" EntityType="Self.loaiSP" />
+          <EntitySet Name="nhomTks" EntityType="Self.nhomTk" />
+          <EntitySet Name="quanHuyens" EntityType="Self.quanHuyen" />
+          <EntitySet Name="sanPhams" EntityType="Self.sanPham" />
+          <EntitySet Name="taiKhoanTVs" EntityType="Self.taiKhoanTV" />
+          <AssociationSet Name="FK__baiViet__maLoai__5EBF139D" Association="Self.FK__baiViet__maLoai__5EBF139D">
+            <End Role="loaiSP" EntitySet="loaiSPs" />
+            <End Role="baiViet" EntitySet="baiViets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__baiViet__taiKhoa__5FB337D6" Association="Self.FK__baiViet__taiKhoa__5FB337D6">
+            <End Role="taiKhoanTV" EntitySet="taiKhoanTVs" />
+            <End Role="baiViet" EntitySet="baiViets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ctDonHang__maSP__60A75C0F" Association="Self.FK__ctDonHang__maSP__60A75C0F">
+            <End Role="sanPham" EntitySet="sanPhams" />
+            <End Role="ctDonHang" EntitySet="ctDonHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ctDonHang__soDH__619B8048" Association="Self.FK__ctDonHang__soDH__619B8048">
+            <End Role="donHang" EntitySet="donHangs" />
+            <End Role="ctDonHang" EntitySet="ctDonHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__donHang__maKH__628FA481" Association="Self.FK__donHang__maKH__628FA481">
+            <End Role="khachHang" EntitySet="khachHangs" />
+            <End Role="donHang" EntitySet="donHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__donHang__taiKhoa__6383C8BA" Association="Self.FK__donHang__taiKhoa__6383C8BA">
+            <End Role="taiKhoanTV" EntitySet="taiKhoanTVs" />
+            <End Role="donHang" EntitySet="donHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__khachHang__maQH__6477ECF3" Association="Self.FK__khachHang__maQH__6477ECF3">
+            <End Role="quanHuyen" EntitySet="quanHuyens" />
+            <End Role="khachHang" EntitySet="khachHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sanPham__maLoai__656C112C" Association="Self.FK__sanPham__maLoai__656C112C">
+            <End Role="loaiSP" EntitySet="loaiSPs" />
+            <End Role="sanPham" EntitySet="sanPhams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__taiKhoanT__maNho__6754599E" Association="Self.FK__taiKhoanT__maNho__6754599E">
+            <End Role="nhomTk" EntitySet="nhomTks" />
+            <End Role="taiKhoanTV" EntitySet="taiKhoanTVs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__taiKhoanTV__maQH__68487DD7" Association="Self.FK__taiKhoanTV__maQH__68487DD7">
+            <End Role="quanHuyen" EntitySet="quanHuyens" />
+            <End Role="taiKhoanTV" EntitySet="taiKhoanTVs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sanPham__taiKhoa__66603565" Association="Self.FK__sanPham__taiKhoa__66603565">
+            <End Role="taiKhoanTV" EntitySet="taiKhoanTVs" />
+            <End Role="sanPham" EntitySet="sanPhams" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BanHangOnlineModelStoreContainer" CdmEntityContainer="BanHangOnlineEntities">
+          <EntitySetMapping Name="baiViets">
+            <EntityTypeMapping TypeName="BanHangOnlineModel.baiViet">
+              <MappingFragment StoreEntitySet="baiViet">
+                <ScalarProperty Name="maBV" ColumnName="maBV" />
+                <ScalarProperty Name="tenBV" ColumnName="tenBV" />
+                <ScalarProperty Name="hinhDD" ColumnName="hinhDD" />
+                <ScalarProperty Name="ndTomTat" ColumnName="ndTomTat" />
+                <ScalarProperty Name="ngayDang" ColumnName="ngayDang" />
+                <ScalarProperty Name="noiDung" ColumnName="noiDung" />
+                <ScalarProperty Name="taiKhoan" ColumnName="taiKhoan" />
+                <ScalarProperty Name="daDuyet" ColumnName="daDuyet" />
+                <ScalarProperty Name="maLoai" ColumnName="maLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ctDonHangs">
+            <EntityTypeMapping TypeName="BanHangOnlineModel.ctDonHang">
+              <MappingFragment StoreEntitySet="ctDonHang">
+                <ScalarProperty Name="soDH" ColumnName="soDH" />
+                <ScalarProperty Name="maSP" ColumnName="maSP" />
+                <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+                <ScalarProperty Name="giaBan" ColumnName="giaBan" />
+                <ScalarProperty Name="giamGia" ColumnName="giamGia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="donHangs">
+            <EntityTypeMapping TypeName="BanHangOnlineModel.donHang">
+              <MappingFragment StoreEntitySet="donHang">
+                <ScalarProperty Name="soDH" ColumnName="soDH" />
+                <ScalarProperty Name="maKH" ColumnName="maKH" />
+                <ScalarProperty Name="taiKhoan" ColumnName="taiKhoan" />
+                <ScalarProperty Name="ngayDat" ColumnName="ngayDat" />
+                <ScalarProperty Name="daKichHoat" ColumnName="daKichHoat" />
+                <ScalarProperty Name="ngayGH" ColumnName="ngayGH" />
+                <ScalarProperty Name="diaChiGH" ColumnName="diaChiGH" />
+                <ScalarProperty Name="ghiChu" ColumnName="ghiChu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="khachHangs">
+            <EntityTypeMapping TypeName="BanHangOnlineModel.khachHang">
+              <MappingFragment StoreEntitySet="khachHang">
+                <ScalarProperty Name="maKH" ColumnName="maKH" />
+                <ScalarProperty Name="tenKH" ColumnName="tenKH" />
+                <ScalarProperty Name="soDT" ColumnName="soDT" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+                <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+                <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+                <ScalarProperty Name="ghiChu" ColumnName="ghiChu" />
+                <ScalarProperty Name="maQH" ColumnName="maQH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loaiSPs">
+            <EntityTypeMapping TypeName="BanHangOnlineModel.loaiSP">
+              <MappingFragment StoreEntitySet="loaiSP">
+                <ScalarProperty Name="maLoai" ColumnName="maLoai" />
+                <ScalarProperty Name="loaiSP1" ColumnName="loaiSP" />
+                <ScalarProperty Name="ghiChu" ColumnName="ghiChu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nhomTks">
+            <EntityTypeMapping TypeName="BanHangOnlineModel.nhomTk">
+              <MappingFragment StoreEntitySet="nhomTk">
+                <ScalarProperty Name="maNhom" ColumnName="maNhom" />
+                <ScalarProperty Name="tenNhom" ColumnName="tenNhom" />
+                <ScalarProperty Name="ghiChu" ColumnName="ghiChu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="quanHuyens">
+            <EntityTypeMapping TypeName="BanHangOnlineModel.quanHuyen">
+              <MappingFragment StoreEntitySet="quanHuyen">
+                <ScalarProperty Name="maQH" ColumnName="maQH" />
+                <ScalarProperty Name="tenQH" ColumnName="tenQH" />
+                <ScalarProperty Name="tinhThanh" ColumnName="tinhThanh" />
+                <ScalarProperty Name="ghiChu" ColumnName="ghiChu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sanPhams">
+            <EntityTypeMapping TypeName="BanHangOnlineModel.sanPham">
+              <MappingFragment StoreEntitySet="sanPham">
+                <ScalarProperty Name="maSP" ColumnName="maSP" />
+                <ScalarProperty Name="tenSP" ColumnName="tenSP" />
+                <ScalarProperty Name="hinhDD" ColumnName="hinhDD" />
+                <ScalarProperty Name="ndTomTat" ColumnName="ndTomTat" />
+                <ScalarProperty Name="ngayDang" ColumnName="ngayDang" />
+                <ScalarProperty Name="loaiHang" ColumnName="loaiHang" />
+                <ScalarProperty Name="noiDung" ColumnName="noiDung" />
+                <ScalarProperty Name="taiKhoan" ColumnName="taiKhoan" />
+                <ScalarProperty Name="daDuyet" ColumnName="daDuyet" />
+                <ScalarProperty Name="giaBan" ColumnName="giaBan" />
+                <ScalarProperty Name="giamGia" ColumnName="giamGia" />
+                <ScalarProperty Name="maLoai" ColumnName="maLoai" />
+                <ScalarProperty Name="nhaSanXuat" ColumnName="nhaSanXuat" />
+                <ScalarProperty Name="dvt" ColumnName="dvt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="taiKhoanTVs">
+            <EntityTypeMapping TypeName="BanHangOnlineModel.taiKhoanTV">
+              <MappingFragment StoreEntitySet="taiKhoanTV">
+                <ScalarProperty Name="taiKhoan" ColumnName="taiKhoan" />
+                <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+                <ScalarProperty Name="hoDem" ColumnName="hoDem" />
+                <ScalarProperty Name="tenTV" ColumnName="tenTV" />
+                <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+                <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+                <ScalarProperty Name="soDT" ColumnName="soDT" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+                <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+                <ScalarProperty Name="ghiChu" ColumnName="ghiChu" />
+                <ScalarProperty Name="maNhom" ColumnName="maNhom" />
+                <ScalarProperty Name="maQH" ColumnName="maQH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

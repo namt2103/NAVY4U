@@ -1,0 +1,55 @@
+﻿@using NAVY4U.Models;
+@{
+    ViewBag.Title = "Article List";
+    List<baiViet> ds = ViewData["DanhSachBV"] as List<baiViet>;
+}
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Danh sách bài viết</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Mã</th>
+                                <th>Tên bài viết</th>
+                                <th>Người đăng tải</th>
+                                <th>Ngày đăng</th>
+                                <th>Lệnh</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (baiViet i in ds)
+                                {
+
+                                    <tr>
+                                        <td>@i.maBV</td>
+                                        <td>@i.tenBV</td>
+                                        <td>@i.taiKhoanTV.hoDem @i.taiKhoanTV.tenTV</td>
+                                        <td>@string.Format("{0: hh:mm [dd/MM/yyyy]}", i.ngayDang)</td>
+                                        <td>
+                                            <button class="btn btn-success">Duyệt bài</button>
+                                            <button class="btn btn-primary">Sửa nội dung</button>
+                                            <button class="btn btn-danger">Xoá</button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

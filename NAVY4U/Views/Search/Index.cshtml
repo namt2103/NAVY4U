@@ -1,0 +1,49 @@
+﻿@using NAVY4U.Models;
+@{
+    ViewBag.Title = "Kết quả tìm kiếm";
+}
+<div class="container">
+    <div class="col-md-12">
+        <br />
+        @{
+            int loopc = 0;
+            foreach (var item in Model)
+            {
+                if (loopc >= 0)
+                {
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <a href="@Url.Action("detail", "products", new {tenSP = item.tenSP})">
+                                        <img src="@item.hinhDD" alt="@item.tenSP" class="img-responsive" />
+                                    </a>
+                                    <h4>
+                                        <span class="unit-cash">@String.Format("₫{0:0,000}", item.giaBan)</span>
+                                        <span id="sale">
+                                            <span>@String.Format("₫{0:0,000}", (item.giaBan - item.giaBan * item.giamGia / 100))</span>
+                                        </span>
+                                    </h4>
+                                    <a href="@Url.Action("detail", "products", new {tenSP = item.tenSP})"><p>@item.tenSP</p></a>
+                                    @using (Html.BeginForm("addToCart", "Home", FormMethod.Post)) 
+                                    {
+                                        <input name="maSP" type="hidden" value="@item.maSP"/>
+                                        <button class="btn btn-primary add-to-cart">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            Thêm vào giỏ
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                loopc++;
+            }
+            if (loopc == 0)
+            {
+                <h2 class="text-center red">Không tìm thấy sản phẩm</h2>
+            }
+        }
+    </div>
+</div>

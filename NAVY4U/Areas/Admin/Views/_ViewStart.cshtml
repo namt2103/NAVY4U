@@ -1,0 +1,10 @@
+﻿@using NAVY4U.Models;
+@{
+    taiKhoanTV x = (taiKhoanTV) Session["TtDangNhap"];
+    if (x == null)
+    {
+        Response.Redirect("~/login");
+    }
+
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}

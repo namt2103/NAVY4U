@@ -1,0 +1,48 @@
+﻿@using NAVY4U.Models;
+@{
+    ViewBag.Title = "Tất cả sản phẩm";
+}
+<div class="container products-list">
+    <div class="row">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">@Html.ActionLink("Trang chủ", "Index", "home")</li>
+                <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-md-12">
+        <br />
+        @{
+            foreach (var item in Common.getsanPhams().OrderBy(x => (x.giaBan - x.giaBan * x.giamGia / 100)))
+            {
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <a href="@Url.Action("detail", "products", new {tenSP = item.tenSP})">
+                                    <img src="@item.hinhDD" alt="@item.tenSP" class="img-responsive" />
+                                </a>
+                                <h4>
+                                    <span class="unit-cash">@String.Format("₫{0:0,000}", item.giaBan)</span>
+                                    <span id="sale">
+                                        <span>@String.Format("₫{0:0,000}", (item.giaBan - item.giaBan * item.giamGia / 100))</span>
+                                    </span>
+                                </h4>
+                                <a href="@Url.Action("detail", "products", new {tenSP = item.tenSP})"><p>@item.tenSP</p></a>
+                                @using (Html.BeginForm("addToCart", "Home", FormMethod.Post)) 
+                                    {
+                                        <input name="maSP" type="hidden" value="@item.maSP"/>
+                                        <button class="btn btn-primary add-to-cart">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            Thêm vào giỏ
+                                        </button>
+                                    }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
