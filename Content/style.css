@@ -22,3 +22,16 @@
 .dflex {
     display:flex;
 }
+h2.title {
+    color: #ED4D2B;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 20px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    position: relative;
+}
+#slider {
+    padding-bottom: 0;
+}

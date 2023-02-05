@@ -7,16 +7,17 @@
     <h2 class="text-center">Danh Sách Bài Viết</h2>
     @foreach (var x in Common.getBaiViet())
     {
-        <div class="m-4">
-            <h3>
-                <a href="#">@x.tenBV</a>
-            </h3>
-            <div class="dflex col-md-12">
-                <a class="" href="#">
-                    <img width="300" src="@x.hinhDD" />
-                </a>
-                <div class="">@x.ndTomTat</div>
+        <div class="d-block">
+            <h3><a href="#">@x.tenBV</a></h3>
+            <div class="dflex">
+                <div style="margin-right: 6px">
+                    <a class="" href="#">
+                        <img width="300" src="@x.hinhDD" />
+                    </a>
+                </div>
+                <div>@x.ndTomTat...<span><a style="color: blue" href="#">Xem tiếp</a></span></div>
             </div>
+            <br />
         </div>
     }
 </div>
