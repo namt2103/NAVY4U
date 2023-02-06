@@ -109,7 +109,7 @@
     <Content Include="Content\adminlte.min.css" />
     <Content Include="Content\all.min.css" />
     <Content Include="Content\animate.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapfixed.min.css" />
     <Content Include="Content\dataTables.bootstrap4.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\responsive.css" />

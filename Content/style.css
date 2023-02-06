@@ -236,4 +236,34 @@ a {
 .shop-menu {
     margin-top: 10px;
 }
-    
+
+/**Edit Bootstrap*/
+.nav-tabs > li > a {
+    border: none;
+    margin-right: 0;
+}
+
+.nav-tabs > li {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+
+button.btn.btn-primary.add-to-cart {
+    color: #ED4D2B;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    margin-bottom: 16px;
+    background: #eee;
+}
+
+    button.btn.btn-primary.add-to-cart:hover {
+        border-radius: 4px;
+        color: #fff;
+        background: #ED4D2B
+    }
+
+.add-to-cart i {
+    margin-right: 5px;
+}
