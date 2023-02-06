@@ -44,49 +44,51 @@
     </div>
 </section><!--/slider-->
 <section>
-    <div class="col-sm-12">
-        <div class="features_items">
-            <!--features_items-->
-            <h2 class="title text-center">Sản phẩm nổi bật</h2>
-            @{
-                int countfeature = 0;
-                foreach (var item in Common.getsanPhams().Where(m => m.maLoai == 1).OrderBy(x => (x.giaBan - x.giaBan * x.giamGia / 100)))
-                {
-                    <div class="col-sm-3">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <a href="@Url.Action("detail", "products", new {tenSP = item.tenSP})">
-                                        <img src="@item.hinhDD" alt="@item.tenSP" class="img-responsive" />
-                                    </a>
-                                    <h4>
-                                        <span class="unit-cash">@String.Format("₫{0:0,000}", item.giaBan)</span>
-                                        <span id="sale">
-                                            <span>@String.Format("₫{0:0,000}", (item.giaBan - item.giaBan * item.giamGia / 100))</span>
-                                        </span>
-                                    </h4>
-                                    <a href="@Url.Action("detail", "products", new {tenSP = item.tenSP})"><p>@item.tenSP</p></a>
-                                    @using (Html.BeginForm("addtocart", "home", FormMethod.Post)) 
-                                    {
-                                        <input name="maSP" type="hidden" value="@item.maSP"/>
-                                        <button class="btn btn-primary add-to-cart">
-                                            <i class="fa fa-shopping-cart"></i>
-                                            Thêm vào giỏ
-                                        </button>
-                                    }
+    <div class="container">
+        <div class="col-sm-12">
+            <div class="features_items">
+                <!--features_items-->
+                <h2 class="title text-center">Sản phẩm nổi bật</h2>
+                @{
+                    int countfeature = 0;
+                    foreach (var item in Common.getsanPhams().Where(m => m.maLoai == 1).OrderBy(x => (x.giaBan - x.giaBan * x.giamGia / 100)))
+                    {
+                        <div class="col-sm-3">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <a href="@Url.Action("detail", "products", new {tenSP = item.tenSP})">
+                                            <img src="@item.hinhDD" alt="@item.tenSP" class="img-responsive" />
+                                        </a>
+                                        <h4>
+                                            <span class="unit-cash">@String.Format("₫{0:0,000}", item.giaBan)</span>
+                                            <span id="sale">
+                                                <span>@String.Format("₫{0:0,000}", (item.giaBan - item.giaBan * item.giamGia / 100))</span>
+                                            </span>
+                                        </h4>
+                                        <a href="@Url.Action("detail", "products", new {tenSP = item.tenSP})"><p>@item.tenSP</p></a>
+                                        @using (Html.BeginForm("addtocart", "home", FormMethod.Post))
+                                        {
+                                            <input name="maSP" type="hidden" value="@item.maSP" />
+                                            <button class="btn btn-primary add-to-cart">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                Thêm vào giỏ
+                                            </button>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    countfeature++;
-                    if (countfeature > 3)
-                    {
-                        break;
+                        countfeature++;
+                        if (countfeature > 3)
+                        {
+                            break;
+                        }
                     }
                 }
-            }
+            </div>
+            <!--features_items-->
         </div>
-        <!--features_items-->
     </div>
 </section>
 <section>

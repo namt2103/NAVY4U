@@ -235,7 +235,6 @@ a {
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
-    margin-bottom: 16px;
     background: #eee;
 }
 
@@ -247,4 +246,10 @@ a {
 
 .add-to-cart i {
     margin-right: 5px;
+}
+.product-image-wrapper {
+    padding-bottom: 16px;
+}
+.tab-pane .title {
+    margin-top: 0;
 }

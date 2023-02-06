@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace NAVY4U.Areas.Admin.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductListController : Controller
     {
-        // GET: Admin/Products
+        // GET: Admin/ProductList
         public ActionResult Index()
         {
             return View();

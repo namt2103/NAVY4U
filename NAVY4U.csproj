@@ -114,7 +114,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\style.css" />
+    <Content Include="Content\Style.css" />
     <Content Include="fonts\all.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -244,7 +244,7 @@
     <Compile Include="Areas\Admin\Controllers\NewArticleController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductListController.cs" />
     <Compile Include="Controllers\ArticleListController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
@@ -322,7 +322,7 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\ListOrder.cshtml" />
-    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductList\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
