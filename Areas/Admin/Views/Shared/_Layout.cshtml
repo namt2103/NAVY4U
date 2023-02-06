@@ -25,7 +25,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="@Url.Action("Index", "Dashboard")" class="nav-link">Home</a>
+                    <a href="@Url.Action("Index", "dashboard")" class="nav-link">Home</a>
                 </li>
             </ul>
 
@@ -83,7 +83,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="@Url.Action("Index","Dashboard")" class="brand-link text-center">
+            <a href="@Url.Action("Index","dashboard")" class="brand-link text-center">
                 <span style="color: goldenrod">ADMIN</span>
                 <span style="color: #ED4D2B">NAVY<span style="color: #eee">4U</span></span>
             </a>
@@ -117,14 +117,14 @@
                                 <li class="nav-item">
                                     <div class="nav-link">
                                         <i class="nav-icon fa fa-solid fa-file-pen"></i>
-                                        @Html.ActionLink("Đăng bài viết", "Index", "NewArticle")
+                                        @Html.ActionLink("Đăng bài viết", "Index", "newarticle")
                                         <span class="right badge badge-danger">Mới</span>
                                     </div>
                                 </li>
                                 <li class="nav-item">
                                     <div class="nav-link">
                                         <i class="nav-icon fa-solid fa fa-rectangle-list"></i>
-                                        @Html.ActionLink("Danh sách bài viết", "Index", "Articles")
+                                        @Html.ActionLink("Danh sách bài viết", "Index", "articles")
                                     </div>
                                 </li>
                             </ul>
@@ -139,7 +139,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="@Url.Action("Index", "NewProduct")" class="nav-link">
+                                    <a href="@Url.Action("Index", "newproduct")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Sản phẩm mới</p>
                                     </a>
@@ -152,10 +152,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="@Url.Action("Index", "products")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Đang kinh doanh</p>
-                                        <span class="right badge badge-danger">Sắp có</span>
                                     </a>
                                 </li>
                             </ul>
@@ -195,7 +194,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="@Url.Action("listorder", "Orders")" class="nav-link">
+                                    <a href="@Url.Action("listorder", "orders")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Đơn mới tạo</p>
                                     </a>

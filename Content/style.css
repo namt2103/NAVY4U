@@ -191,25 +191,6 @@ a {
 
 
 /** */
-.btn.btn-primary.add-to-cart {
-    color: #ED4D2B;
-    border-radius: 4px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    margin-bottom: 16px;
-}
-
-    .btn.btn-primary.add-to-cart:hover {
-        border-radius: 4px;
-        color: #fff;
-        background: #ED4D2B;
-    }
-.btn.btn-primary {
-    border-radius: 4px;
-}
-    .btn.btn-primary:hover {
-        background: #c23415;
-    }
 
 .dflex {
     display:flex;
@@ -249,7 +230,7 @@ a {
 }
 
 
-button.btn.btn-primary.add-to-cart {
+.btn.btn-primary.add-to-cart {
     color: #ED4D2B;
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;
@@ -258,7 +239,7 @@ button.btn.btn-primary.add-to-cart {
     background: #eee;
 }
 
-    button.btn.btn-primary.add-to-cart:hover {
+.btn.btn-primary.add-to-cart:hover {
         border-radius: 4px;
         color: #fff;
         background: #ED4D2B

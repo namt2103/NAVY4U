@@ -15,6 +15,7 @@ namespace NAVY4U.Controllers
         {
             return View();
         }
+        [HttpPost]
         public ActionResult addToCart(string maSP)
         {
             CartShop gioHang = Session["GioHang"] as CartShop;
