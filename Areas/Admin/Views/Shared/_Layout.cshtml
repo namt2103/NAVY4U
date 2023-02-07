@@ -30,7 +30,7 @@
             </ul>
 
             <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
+            @*<form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
                     <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
                     <div class="input-group-append">
@@ -39,7 +39,7 @@
                         </button>
                     </div>
                 </div>
-            </form>
+            </form>*@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -105,6 +105,14 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
+                        <li class="nav-item has-treeview">
+                            <a href="@Url.Action("Index", "Dashboard")" class="nav-link">
+                                <i class="nav-icon fa-solid fa-dashboard"></i>
+                                <p>
+                                    Dashboard
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa-solid fa fa-note-sticky"></i>

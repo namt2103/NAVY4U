@@ -86,6 +86,12 @@ namespace NAVY4U.Models
             l = db.donHangs.OrderByDescending(bv => bv.ngayDat).ToList<donHang>();
             return l;
         }
-
+        public static List<ctDonHang> GetCtDonHangs(string n)
+        {
+            List<ctDonHang> l = new List<ctDonHang>();
+            BanHangOnlineEntities db = new BanHangOnlineEntities();
+            l = db.ctDonHangs.Where(x => x.soDH == n).ToList<ctDonHang>();
+            return l;
+        }
     }
 }

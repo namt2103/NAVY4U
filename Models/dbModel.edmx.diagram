@@ -4,46 +4,34 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1077d0bb5aa84d1e92e0f65a2db14d5c" Name="Diagram1" ZoomLevel="72">
+      <Diagram DiagramId="1077d0bb5aa84d1e92e0f65a2db14d5c" Name="Diagram1" ZoomLevel="58">
         <EntityTypeShape EntityType="BanHangOnlineModel.baiViet" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BanHangOnlineModel.ctDonHang" Width="1.5" PointX="10" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangOnlineModel.ctDonHang" Width="1.5" PointX="9.875" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BanHangOnlineModel.donHang" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BanHangOnlineModel.khachHang" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BanHangOnlineModel.loaiSP" Width="1.5" PointX="10" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangOnlineModel.khachHang" Width="1.5" PointX="5.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangOnlineModel.loaiSP" Width="1.5" PointX="9.875" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BanHangOnlineModel.nhomTk" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="BanHangOnlineModel.quanHuyen" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BanHangOnlineModel.sanPham" Width="1.5" PointX="12.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangOnlineModel.sanPham" Width="1.5" PointX="12.25" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BanHangOnlineModel.taiKhoanTV" Width="1.5" PointX="2.75" PointY="0.625" IsExpanded="true" />
-        <AssociationConnector Association="BanHangOnlineModel.FK__baiViet__maLoai__5EBF139D" ManuallyRouted="true" >
-          <ConnectorPoint PointX="10" PointY="1.4901432291666659" />
-          <ConnectorPoint PointX="9.6869976909884965" PointY="1.4901432291666659" />
-          <ConnectorPoint PointX="9.6869976909884965" PointY="0.23811911046504974" />
-          <ConnectorPoint PointX="6" PointY="0.23811911046504974" />
-          <ConnectorPoint PointX="6" PointY="0.75" />
+        <AssociationConnector ManuallyRouted="false" Association="BanHangOnlineModel.FK__baiViet__maLoai__5EBF139D">
         </AssociationConnector>
         <AssociationConnector Association="BanHangOnlineModel.FK__baiViet__taiKhoa__5FB337D6" ManuallyRouted="false" />
         <AssociationConnector Association="BanHangOnlineModel.FK__ctDonHang__maSP__60A75C0F" ManuallyRouted="false" />
         <AssociationConnector Association="BanHangOnlineModel.FK__ctDonHang__soDH__619B8048" ManuallyRouted="false" />
         <AssociationConnector Association="BanHangOnlineModel.FK__donHang__maKH__628FA481" ManuallyRouted="false" />
         <AssociationConnector Association="BanHangOnlineModel.FK__donHang__taiKhoa__6383C8BA" ManuallyRouted="true" >
-          <ConnectorPoint PointX="4.25" PointY="3.2522752630208269" />
-          <ConnectorPoint PointX="5" PointY="3.2522752630208269" />
-          <ConnectorPoint PointX="5" PointY="0.484375" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="0.48437499999999944" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="0.484375" />
-          <ConnectorPoint PointX="8.7169232887497685" PointY="0.484375" />
-          <ConnectorPoint PointX="8.7169232887497685" PointY="0.75" />
+          <ConnectorPoint PointX="4.25" PointY="2.7516423113833364" />
+          <ConnectorPoint PointX="5" PointY="2.7516423113833364" />
+          <ConnectorPoint PointX="5" PointY="0.32060190755873919" />
+          <ConnectorPoint PointX="8.5" PointY="0.32060190755873919" />
+          <ConnectorPoint PointX="8.5" PointY="0.75" />
         </AssociationConnector>
         <AssociationConnector Association="BanHangOnlineModel.FK__khachHang__maQH__6477ECF3" ManuallyRouted="false" />
         <AssociationConnector Association="BanHangOnlineModel.FK__sanPham__maLoai__656C112C" ManuallyRouted="false" />
         <AssociationConnector Association="BanHangOnlineModel.FK__taiKhoanT__maNho__6754599E" ManuallyRouted="false" />
         <AssociationConnector Association="BanHangOnlineModel.FK__taiKhoanTV__maQH__68487DD7" ManuallyRouted="false" />
-        <AssociationConnector Association="BanHangOnlineModel.FK__sanPham__taiKhoa__66603565" ManuallyRouted="true" >
-          <ConnectorPoint PointX="3.5" PointY="0.625" />
-          <ConnectorPoint PointX="3.5" PointY="0.15036736140648443" />
-          <ConnectorPoint PointX="14.162533094180541" PointY="0.15036736140648443" />
-          <ConnectorPoint PointX="14.162533094180541" PointY="2.6776432291666659" />
-          <ConnectorPoint PointX="13.75" PointY="2.6776432291666659" />
+        <AssociationConnector Association="BanHangOnlineModel.FK__sanPham__taiKhoa__66603565" ManuallyRouted="false" >
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

@@ -448,8 +448,8 @@
           <NavigationProperty Name="sanPhams" Relationship="Self.FK__sanPham__taiKhoa__66603565" FromRole="taiKhoanTV" ToRole="sanPham" />
         </EntityType>
         <Association Name="FK__baiViet__maLoai__5EBF139D">
-          <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="0..1" />
-          <End Role="baiViet" Type="Self.baiViet" Multiplicity="*" />
+          <End Type="Self.loaiSP" Multiplicity="0..1" Role="loaiSP" />
+          <End Type="Self.baiViet" Multiplicity="*" Role="baiViet" />
           <ReferentialConstraint>
             <Principal Role="loaiSP">
               <PropertyRef Name="maLoai" />
@@ -590,8 +590,8 @@
           <EntitySet Name="sanPhams" EntityType="Self.sanPham" />
           <EntitySet Name="taiKhoanTVs" EntityType="Self.taiKhoanTV" />
           <AssociationSet Name="FK__baiViet__maLoai__5EBF139D" Association="Self.FK__baiViet__maLoai__5EBF139D">
-            <End Role="loaiSP" EntitySet="loaiSPs" />
-            <End Role="baiViet" EntitySet="baiViets" />
+            <End EntitySet="loaiSPs" Role="loaiSP" />
+            <End EntitySet="baiViets" Role="baiViet" />
           </AssociationSet>
           <AssociationSet Name="FK__baiViet__taiKhoa__5FB337D6" Association="Self.FK__baiViet__taiKhoa__5FB337D6">
             <End Role="taiKhoanTV" EntitySet="taiKhoanTVs" />
